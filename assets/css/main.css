@@ -3141,6 +3141,148 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 25%);
 }
 
+/*--------------------------------------------------------------
+# Opportunities Section
+--------------------------------------------------------------*/
+.opportunities {
+  background: linear-gradient(135deg, var(--background-color) 0%, color-mix(in srgb, var(--surface-color), rgba(34, 231, 161, 0.05)) 100%);
+}
+
+.opportunity-highlight {
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.opportunity-highlight::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-color), transparent 90%), transparent 70%);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.opportunity-highlight:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 40px color-mix(in srgb, var(--accent-color), transparent 85%);
+  transform: translateY(-5px);
+}
+
+.opportunity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--accent-color), transparent 80%);
+  color: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.opportunity-badge-icon {
+  font-size: 1rem;
+}
+
+.opportunity-content {
+  position: relative;
+  z-index: 1;
+}
+
+.opportunity-header {
+  margin-bottom: 20px;
+}
+
+.opportunity-title {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+.opportunity-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 0.95rem;
+}
+
+.meta-item i {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+.opportunity-description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  margin-bottom: 28px;
+}
+
+.opportunity-highlights {
+  background: color-mix(in srgb, var(--background-color), rgba(255, 255, 255, 0.05));
+  border-left: 3px solid var(--accent-color);
+  border-radius: 6px;
+  padding: 20px 20px;
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .opportunity-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--default-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.highlight-item i {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.opportunity-footer {
+  padding-top: 20px;
+  border-top: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
+}
+
+.footer-note {
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  margin: 0;
+  font-style: italic;
+}
+
 .portfolio-details .tools-section .tools-grid .tool-category {
   margin-bottom: 2.5rem;
 }
