@@ -3283,6 +3283,227 @@ section,
   font-style: italic;
 }
 
+/*--------------------------------------------------------------
+# Languages & Skills Display
+--------------------------------------------------------------*/
+.language-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.language-item {
+  padding: 12px 0;
+}
+
+.language-name {
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.language-level {
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: color-mix(in srgb, var(--accent-color), transparent 80%);
+  color: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 60%);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: var(--accent-color);
+  color: var(--background-color);
+  border-color: var(--accent-color);
+}
+
+.interests-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.interests-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+  color: var(--default-color);
+  line-height: 1.6;
+}
+
+.interests-list i {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/*--------------------------------------------------------------
+# Honours & Awards Section
+--------------------------------------------------------------*/
+.honours {
+  background: var(--background-color);
+}
+
+.award-card {
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
+  border-radius: 10px;
+  padding: 25px;
+  height: 100%;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.award-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 85%);
+  transform: translateY(-5px);
+}
+
+.award-header {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  align-items: flex-start;
+}
+
+.award-icon {
+  width: 45px;
+  height: 45px;
+  background: color-mix(in srgb, var(--accent-color), transparent 85%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.award-info {
+  flex: 1;
+}
+
+.award-card h4 {
+  font-size: 1.1rem;
+  margin: 0 0 5px 0;
+  color: var(--heading-color);
+}
+
+.award-date {
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.award-card p {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.badge-link {
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.badge-link:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  text-decoration: underline;
+}
+
+/*--------------------------------------------------------------
+# Activity Cards (Conferences, Seminars)
+--------------------------------------------------------------*/
+.activity-card {
+  background: var(--surface-color);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 25px;
+  height: 100%;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 15px;
+}
+
+.activity-card:hover {
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 85%);
+  transform: translateX(5px);
+}
+
+.activity-icon {
+  width: 50px;
+  height: 50px;
+  background: color-mix(in srgb, var(--accent-color), transparent 85%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.activity-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-content h4 {
+  font-size: 1.05rem;
+  margin: 0 0 8px 0;
+  color: var(--heading-color);
+  line-height: 1.4;
+}
+
+.activity-location {
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-bottom: 3px;
+  display: block;
+}
+
+.activity-date {
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.activity-content p {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.eth-highlight {
+  border-left-color: #0051BA;
+}
+
 .portfolio-details .tools-section .tools-grid .tool-category {
   margin-bottom: 2.5rem;
 }

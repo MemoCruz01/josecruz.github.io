@@ -1,0 +1,31 @@
+graph TD
+    A["🌐 index.html<br/>Main Webpage"] --> B["📝 Content Sections"]
+    A --> C["🎨 Styling Links"]
+    A --> D["⚙️ Script Links"]
+    
+    B --> B1["🦸 Hero Section<br/>Your intro & profile"]
+    B --> B2["ℹ️ About Section<br/>Who you are"]
+    B --> B3["📊 Skills Section<br/>Your abilities"]
+    B --> B4["💼 Resume Section<br/>Experience & Education"]
+    B --> B5["🖼️ Portfolio Section<br/>Your projects"]
+    B --> B6["🎯 Services Section<br/>What you offer"]
+    B --> B7["⭐ Opportunities<br/>NEW: ETH Zurich"]
+    B --> B8["📞 Contact Section<br/>Contact form"]
+    
+    C --> C1["🎨 main.css<br/>All styling<br/>- Colors<br/>- Layouts<br/>- Fonts<br/>- Animations"]
+    
+    D --> D1["⚙️ main.js<br/>Interactive features<br/>- Scroll animations<br/>- Menu toggles<br/>- Form handling"]
+    
+    C1 --> C2["🎭 Color Variables<br/>--accent-color<br/>--background-color<br/>--default-color"]
+    C1 --> C3["📐 Section Styles<br/>.hero { }<br/>.about { }<br/>.portfolio { }"]
+    
+    E["📁 assets/img/<br/>Images folder"] --> E1["👤 person/<br/>People photos"]
+    E --> E2["🖼️ portfolio/<br/>Project images"]
+    E --> E3["🎯 profile/<br/>Your profiles pics"]
+    
+    style A fill:#22e7a1
+    style B fill:#293443
+    style C fill:#293443
+    style D fill:#293443
+    style C1 fill:#38485f
+    style E fill:#38485f

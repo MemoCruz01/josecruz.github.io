@@ -1,0 +1,326 @@
+JOSE GUILLERMO CRUZ GARCIA
+Structured CV Text Extraction
+Source: Extracted and reorganized from uploaded CV PDF.
+
+============================================================
+1. CONTACT INFORMATION
+============================================================
+Full name: José Guillermo Cruz García
+Date of birth: 09/03/2001
+Nationality: Mexican
+Gender: Male
+Phone: (+49) 15123642751
+Emails:
+- ing.jose.cruzg@gmail.com
+- joseguillermo.cruzgarcia@gmail.com
+Website / Portfolio:
+- https://miscompetenciastec21.tec.mx/elumen/portfolio/6alQxpkcXD5c0Vq1
+Home address:
+- Walter-Sedlmayr-Pl. 6, 80995, Munich, Germany
+
+============================================================
+2. PROFESSIONAL PROFILE
+============================================================
+Innovative leader with expertise in:
+- Robotics and AI-based optimisation
+- Automation
+- Consulting upgrades
+- Systems engineering
+
+Portfolio reference:
+- Portfolio of Experiences JoseCruz
+
+============================================================
+3. WORK EXPERIENCE
+============================================================
+
+3.1 Robotic Automation / Virtual Commissioning Programmer
+Organization: Research and Innovation Center, BMW Group
+Location: Munich, Germany
+Dates: 18/09/2023 - 18/03/2024
+Main responsibilities and achievements:
+- Data management within database preparation for training machine learning models in a dynamic robotic cell.
+- Simulation and optimisation by virtual commissioning of production stations with welding robots for motor vehicles of 2 BMW models.
+- Programming of macro libraries for virtual commissioning using Process Simulate and Siemens SIMIT.
+- Planning of milestones for collaborative and automated systems in an assembly line for 4 BMW models.
+
+3.2 Automation-Technology and Robotics Programmer
+Organization: KUKA Assembly & Test GmbH
+Location: Bremen, Germany
+Dates: 01/04/2023 - 15/09/2023
+Main responsibilities and achievements:
+- Internship focused on improving automation processes and developing control systems using robotic and technical solutions.
+- Improvement of E-Plan layout for project management tasks.
+- Configuration of a diagnostic system in an automated assembly line.
+- Testing and simulation of assembly fixtures for motors.
+
+3.3 Project Leader - Autonomous Guided Vehicle
+Organization: Monterrey Institute of Technology and Higher Education
+Location: Toluca, Mexico
+Dates: 01/02/2022 - 30/06/2022
+Main responsibilities and achievements:
+- Design, manufacturing plan, and associated programming of an AGV for indoor tours.
+- Coordination of a multidisciplinary team of 11 people.
+- Project valued at 10,500 EUR, including documentation of tests and component assembly.
+- CAD / CAE / CAM work.
+- Researcher at the Center for Automotive Research and Mechatronics Research.
+
+============================================================
+4. EDUCATION AND TRAINING
+============================================================
+
+4.1 EMINENT - Erasmus+ Mundus Joint Master Degree
+Institutions: Uni Siegen, Uni Orléans, Hellenic Mediterranean University, Uni Nova
+Location: Munich, Germany
+Dates: 24/09/2024 - Current
+Field of study:
+- Embedded Intelligence Nanosystems Engineering
+- IoT and Robotics specialization
+Level in EQF: 7
+Credits: 120 ECTS
+Website:
+- https://eminent-master.eu/curriculum-degree/
+Additional link:
+- https://eminent-master.eu/wp-content/uploads/2024/10/shema-1024x682.png
+
+4.2 Bachelor of Science in Mechatronics Engineering
+Institution: Instituto Tecnológico y de Estudios Superiores de Monterrey
+Location: Toluca, Mexico
+Dates: 05/08/2019 - 21/06/2024
+Address:
+- Av. Eduardo Monroy Cárdenas 2000, San Antonio Buenavista 50110
+Website:
+- https://tec.mx/es/toluca
+
+4.3 Specialty in Systems Engineering - Optimization Applications
+Institution: Universität des Saarlandes
+Location: Saarbrücken, Germany
+Dates: 01/10/2022 - Current
+Address:
+- Saarbrücken 66123
+Website:
+- https://www.uni-saarland.de/start.html
+
+4.4 Digital Systems Technician
+Institution: Instituto Politécnico Nacional
+Location: CDMX, Mexico
+Dates: 08/08/2016 - 20/06/2019
+Address:
+- Mar Mediterráneo 227, Popotla 11400
+Website:
+- https://www.cecyt9.ipn.mx/
+
+============================================================
+5. CONFERENCES, SEMINARS, AND ACADEMIC ACTIVITIES
+============================================================
+
+5.1 Interactive Robotics & ROS Navigation
+Location: Bourges, France
+Dates: 05/09/2025 - 25/02/2026
+Details:
+- Developed a ROS-based navigation pipeline for autonomous TurtleBot 4.
+- Integrated sensors, mapping, and path planning.
+- Tested navigation performance in real office environments under dynamic conditions.
+
+5.2 Interactive Robotics Seminar
+Institution / Location: Universität des Saarlandes, Saarbrücken, Germany
+Dates: 20/10/2022 - 24/03/2023
+Details:
+- Visual gesture recognition with camera for language translation with robotic arm Braccio.
+- Objective: enable a robotic arm to write based on sign language.
+
+5.3 Static and Dynamic of Robotics
+Institution / Location: ZeMA Research Center, Saarbrücken, Saarland, Germany
+Dates: 24/10/2022 - 31/03/2023
+Details:
+- Visual recognition add-on modules for robotic arms in interactive modules.
+- Programming of algorithms for serial robotic arms based on static and dynamic models.
+- Application aimed at building block structures.
+
+5.4 Robotixs Seminar for Robotics Implementation and Solutions Proposals
+Institution / Location: Universität Luxemburg, Luxembourg
+Dates: 06/02/2023 - 10/02/2023
+Details:
+- Seminar focused on robotics implementation and solution proposals for projects and challenges in robotics.
+
+5.5 Tecnomatrix & ABB Robot Studio
+Institution / Location: CIMA ITESM Toluca, Mexico
+Dates: 04/02/2022 - 30/06/2022
+Details:
+- Development of a semi-automatic assembly line for the production of electric vehicles.
+
+============================================================
+6. LANGUAGE SKILLS
+============================================================
+Mother tongue:
+- Spanish
+
+Other languages:
+
+German
+- Listening: C1
+- Reading: C1
+- Spoken production: B2
+- Spoken interaction: C1
+- Writing: C1
+
+French
+- Listening: B2
+- Reading: B2
+- Spoken production: B1
+- Spoken interaction: B2
+- Writing: B1
+
+English
+- Listening: C1
+- Reading: C1
+- Spoken production: C1
+- Spoken interaction: C1
+- Writing: C1
+
+Italian
+- Listening: A1
+- Reading: A2
+- Spoken production: A1
+- Spoken interaction: A2
+- Writing: A1
+
+============================================================
+7. TECHNICAL SKILLS
+============================================================
+
+7.1 Project Management and Documentation
+- Microsoft Office
+- Project management tools: Notion, Trello
+- Slack
+- Zoom
+- Google Drive
+- Overleaf and LaTeX
+- Outlook
+
+7.2 Automation and Control Programming
+- RoboDK
+- Tecnomatix
+- RobotStudio / RAPID
+- ROS
+
+7.3 Marketing and Visual Media
+- DaVinci
+- Adobe tools (including Photoshop and Illustrator)
+- Social media
+
+7.4 CAD / CAM / CAE
+- SolidWorks
+- NX Siemens
+- SolidCAM
+- CATIA
+
+7.5 Programming Languages and Environments
+- ROS
+- Python
+- C++
+- Linux
+- MATLAB
+- Simulink
+- Git
+- Arduino
+- Google Cloud ML
+- PyROOT
+- RDataFrame
+- Keras
+- TensorFlow
+- Excel programming (VBA)
+
+============================================================
+8. PROJECTS
+============================================================
+
+8.1 All-Terrain Vehicle Design, Manufacturing and Validation
+Dates: 01/08/2019 - Current
+Role:
+- Captain of the BAJA SAE Expertise BTBR international competition team
+Team size:
+- 42 people
+Main contributions:
+- System integration using CAD / CAE / CAM
+- Built an off-road vehicle for 7,300 EUR
+- Supervised various manufacturing processes
+- Led development and validation of automotive components
+Link:
+- https://www.instagram.com/btbracing/?hl=es
+
+8.2 Giant Motors Latinoamérica & JAC Motors
+Dates: 04/02/2022 - 16/06/2022
+Project:
+- Digital design of a future production line at original size (CAD)
+Main contributions:
+- Coordination of semi-automatic assembly of an electric vehicle
+- Led work with 34 mechatronics students
+- Reduction of the original budget of 490,000 EUR
+- Optimisation of Product Lifecycle Management phases
+
+============================================================
+9. HONOURS AND AWARDS
+============================================================
+
+9.1 CSWE-S - Mechanical Simulation Expert
+Date: 13/07/2021
+Organization: Dassault Systèmes - SolidWorks
+Description:
+- Expert-level simulation and validation of mechanical designs.
+- International certification.
+Link:
+- https://www.credly.com/badges/318d939b-9e82-4db3-a0c9-9725688a271e/public_url
+
+9.2 CSWE - Mechanical Design Expert
+Date: 12/03/2021
+Organization: Dassault Systèmes - SolidWorks
+Description:
+- Expert mechanical design, component modeling, simulations, and testing.
+- International certification.
+Link:
+- https://www.credly.com/badges/8590cdc6-9383-47ba-824d-e6922f3a7e51/public_url
+
+9.3 Engineering Expo - 1st Place
+Date: 12/06/2021
+Organization: ITESM Campus Toluca
+Description:
+- Development of a semi-automatic assembly line for the production of electric vehicles.
+
+9.4 Global Citizens - Universitas 21
+Date: 11/11/2021
+Location: Online / Amsterdam
+Description:
+- Participation in international discussions to find solutions for the SDGs.
+- International discussions and action proposals.
+
+9.5 Business Model Presentation - 1st Place
+Date: 24/11/2021
+Organization: BAJA SAE Mexico
+Description:
+- International pitch on a business model for distribution, national positioning, and costs for 4,000 units of the designed off-road vehicle.
+
+9.6 Reduction of Vehicle Design Costs - 2nd Place
+Date: 08/11/2020
+Organization: BAJA SAE Mexico
+Description:
+- Reduction of the suspension system budget while maintaining functionality and competitiveness.
+
+9.7 IDEEA Projekt - 4th Place
+Date: 14/06/2021
+Organization: Bergische Universität Wuppertal
+Description:
+- Participation with a modular vehicle concept to improve mobility in megacities.
+
+============================================================
+10. HOBBIES AND INTERESTS
+============================================================
+- Modern and Latino dance: Salsa, Bachata, Cumbia, HipHop, House, Urban Dance
+- Hiking and mountain biking: CEMAC Mexico
+- 3D printing and design: CAD design
+- Photography and post-editing: Adobe, DaVinci
+
+============================================================
+11. OPTIONAL SHORT PROFILE SUMMARY FOR LLM INGESTION
+============================================================
+José Guillermo Cruz García is a Mexican mechatronics engineer and Erasmus Mundus master's student specialized in embedded intelligence, IoT, robotics, automation, and systems engineering. He has industry experience at BMW Group and KUKA in Germany, working on robotic automation, virtual commissioning, and production systems. His academic and project background includes AGVs, ROS navigation, robotic vision, automated assembly lines, CAD/CAE/CAM, and automotive design competitions. He speaks Spanish natively, has strong English and German skills, and works with tools such as Python, C++, MATLAB, Simulink, ROS, Tecnomatix, RobotStudio, SolidWorks, and Git.
