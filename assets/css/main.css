@@ -658,7 +658,7 @@ section,
 .hero .hero-content .hero-description {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  color: color-mix(in srgb, var(--default-color), transparent 0%);
   margin-bottom: 3rem;
   max-width: 90%;
 }
@@ -867,8 +867,9 @@ section,
 # About Section
 --------------------------------------------------------------*/
 .about {
-  padding-top: 120px;
+  padding-top: 80px;
   padding-bottom: 120px;
+  scroll-margin-top: 0px;    /* Add this line */
 }
 
 .about .intro-header {
@@ -887,6 +888,7 @@ section,
   font-size: 1.25rem;
   font-weight: 400;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: var(--heading-color);  /* Uses white heading color */
   margin: 0;
 }
 
@@ -901,11 +903,12 @@ section,
 .about .profile-section .profile-image-container img {
   width: 100%;
   max-width: 300px;
-  aspect-ratio: 1;
+  aspect-ratio: 3/4;
   object-fit: cover;
   border-radius: 12px;
   filter: grayscale(20%);
   transition: filter 0.3s ease;
+  margin-top: 0px;  /* Adjust the value to shift up/down */
 }
 
 .about .profile-section .profile-image-container img:hover {
@@ -949,6 +952,14 @@ section,
 }
 
 .about .content-area .story-block .lead-text {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: var(--default-color);
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+.about .content-area .story-block .lead-text-white {
   font-size: 1.3rem;
   line-height: 1.7;
   font-weight: 300;
@@ -2052,8 +2063,87 @@ section,
   width: 100%;
 }
 
+/* Horizontal Filter Styles */
+.portfolio-filters-horizontal {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.portfolio-filters-horizontal .filters-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.portfolio-filters-horizontal .filters-list li {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  font-family: var(--heading-font);
+  letter-spacing: 0.5px;
+}
+
+.portfolio-filters-horizontal .filters-list li:hover {
+  color: var(--heading-color);
+  border-color: var(--accent-color);
+}
+
+.portfolio-filters-horizontal .filters-list li.filter-active {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+}
+
+@media (max-width: 768px) {
+  .portfolio-filters-horizontal .filters-list {
+    gap: 0.75rem;
+  }
+
+  .portfolio-filters-horizontal .filters-list li {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+}
+
 .portfolio .portfolio-container {
   position: relative;
+}
+
+/* Styled scrollbar for portfolio container */
+.portfolio-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.portfolio-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.portfolio-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.portfolio-container::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+/* Firefox scrollbar styling */
+.portfolio-container {
+  scrollbar-color: var(--accent-color) transparent;
+  scrollbar-width: thin;
 }
 
 .portfolio .portfolio-card {
@@ -3310,6 +3400,36 @@ section,
   font-weight: 600;
 }
 
+/* Skill Icons for Languages */
+.skill-indicators {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.skill-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(34, 231, 161, 0.1);
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  color: var(--accent-color);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skill-icon:hover {
+  background: rgba(34, 231, 161, 0.2);
+  transform: translateY(-2px);
+}
+
+.skill-icon i {
+  font-size: 0.9rem;
+}
+
 .skills-tags {
   display: flex;
   flex-wrap: wrap;
@@ -3434,6 +3554,330 @@ section,
 .badge-link:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 20%);
   text-decoration: underline;
+}
+
+/*--------------------------------------------------------------
+# Custom Image Modal
+--------------------------------------------------------------*/
+.image-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  animation: fadeInOverlay 0.3s ease-out;
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  position: relative;
+  z-index: 100000;
+  max-width: 80vw;
+  max-height: 80vh;
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+  animation: slideInModal 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes slideInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  background: var(--accent-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--contrast-color);
+  font-size: 20px;
+  z-index: 100001;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(34, 231, 161, 0.3);
+}
+
+.modal-close:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 25px rgba(34, 231, 161, 0.5);
+}
+
+.modal-close:active {
+  transform: scale(1.1) rotate(90deg) translateY(2px);
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    padding: 15px;
+  }
+
+  .modal-close {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/*--------------------------------------------------------------
+# GLightbox Image Viewer
+--------------------------------------------------------------*/
+/* Main lightbox container */
+.glightbox-container {
+  z-index: 10000 !important;
+}
+
+/* Lightbox background overlay - makes clicking it close the lightbox */
+.glightbox-container .goverlay {
+  background: rgba(0, 0, 0, 0.95) !important;
+}
+
+.glightbox-container .gslider {
+  background: rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Main slide wrapper */
+.glightbox-container .gslide.current {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Image wrapper in lightbox */
+.glightbox-container .gslide-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
+/* Image itself */
+.glightbox-container .gslide-image img,
+.glightbox-container .gslide-image picture {
+  max-width: 90vw !important;
+  max-height: 85vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(34, 231, 161, 0.3);
+  animation: slideInImage 0.3s ease-out;
+}
+
+@keyframes slideInImage {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Close button - ensure it's visible and clickable */
+.glightbox-container .gclose {
+  position: fixed !important;
+  top: 30px !important;
+  right: 30px !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: var(--accent-color) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  z-index: 99999 !important;
+  font-size: 28px !important;
+  color: var(--contrast-color) !important;
+  box-shadow: 0 4px 20px rgba(34, 231, 161, 0.4) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Close button SVG icon */
+.glightbox-container .gclose svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke: var(--contrast-color) !important;
+}
+
+.glightbox-container .gclose:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 15%) !important;
+  transform: scale(1.1) rotate(90deg) !important;
+  box-shadow: 0 6px 30px rgba(34, 231, 161, 0.6) !important;
+}
+
+.glightbox-container .gclose:active {
+  transform: scale(1.1) rotate(90deg) translateY(2px) !important;
+}
+
+/* Mobile responsiveness for close button */
+@media (max-width: 768px) {
+  .glightbox-container .gclose {
+    top: 15px !important;
+    right: 15px !important;
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 20px !important;
+  }
+}
+
+/* Next/Previous navigation buttons */
+.glightbox-container .gnext,
+.glightbox-container .gprev {
+  position: fixed !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: rgba(34, 231, 161, 0.2) !important;
+  border: 2px solid var(--accent-color) !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--accent-color) !important;
+  transition: all 0.3s ease !important;
+  font-size: 24px !important;
+  z-index: 99999 !important;
+}
+
+.glightbox-container .gnext svg,
+.glightbox-container .gprev svg {
+  stroke: var(--accent-color) !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.glightbox-container .gnext:hover,
+.glightbox-container .gprev:hover {
+  background: rgba(34, 231, 161, 0.4) !important;
+  transform: translateY(-50%) scale(1.15) !important;
+}
+
+.glightbox-container .gnext {
+  right: 30px !important;
+}
+
+.glightbox-container .gprev {
+  left: 30px !important;
+}
+
+@media (max-width: 768px) {
+  .glightbox-container .gnext {
+    right: 15px !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 18px !important;
+  }
+
+  .glightbox-container .gprev {
+    left: 15px !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 18px !important;
+  }
+}
+
+/* Description/Title below image */
+.glightbox-container .gslide-description {
+  color: var(--heading-color) !important;
+  text-align: center !important;
+  padding: 20px !important;
+  font-size: 14px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 8px !important;
+  margin-top: 20px !important;
+}
+
+/* Ensure overlay fills entire viewport and is clickable */
+.glightbox-container .gslider {
+  width: 100vw !important;
+  height: 100vh !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* Additional styling for smooth transitions */
+.glightbox-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Prevent body scroll when lightbox is open */
+body.glightbox-open {
+  overflow: hidden !important;
 }
 
 /*--------------------------------------------------------------

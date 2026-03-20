@@ -6,6 +6,34 @@
 * License: https://bootstrapmade.com/license/
 */
 
+/**
+ * Custom Image Modal Handler - Global Scope
+ */
+window.openImageModal = function(imageSrc) {
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  if (modal && modalImage) {
+    modalImage.src = imageSrc;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+window.closeImageModal = function() {
+  const modal = document.getElementById('imageModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Close modal when pressing Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeImageModal();
+  }
+});
+
 (function() {
   "use strict";
 
@@ -109,13 +137,6 @@
         });
       }
     });
-  });
-
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
   });
 
   /**
