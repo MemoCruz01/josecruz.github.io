@@ -7,7 +7,7 @@
   <title>Visual Gesture Recognition for Robotics - Project Details</title>
   <meta name="description" content="Sign language gesture recognition system enabling robotic arm to write based on predicted gestures">
 
-  <link href="../../assets/img/favicon.png" rel="icon">
+  <link href="../../assets/img/FWorld_Icon.png" rel="icon">
   <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -19,6 +19,8 @@
   <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="../../assets/css/main.css" rel="stylesheet">
+  <!-- Project Navigator CSS -->
+  <link href="../../assets/css/project-navigator.css" rel="stylesheet">
 </head>
 
 <body class="portfolio-details-page">
@@ -40,7 +42,7 @@
         <li><a href="../../index.html#hero"><i class="bi bi-house navicon"></i>Home</a></li>
         <li><a href="../../index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
         <li><a href="../../index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="../../index.html#portfolio"><i class="bi bi-images navicon"></i> Portfolio Overview</a></li>
+        <li><a href="../../portfolio-details.html"><i class="bi bi-images navicon"></i> Portfolio Overview</a></li>
         <li><a href="../../index.html#honours"><i class="bi bi-award navicon"></i> Honors & Awards</a></li>
         <li><a href="../../index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
       </ul>
@@ -103,26 +105,20 @@
         </div>
 
         <div class="visual-showcase" data-aos="fade-up" data-aos-delay="100">
-          <div class="showcase-gallery">
-            <div class="gallery-item large" data-aos="zoom-in" data-aos-delay="150">
-              <img src="../../projects/project-6-gesture-recognition/img/Begin.webp" alt="Gesture recognition setup" class="img-fluid glightbox">
-              <p style="text-align: center; margin-top: 1rem; color: #999; font-size: 0.9rem;">
-                Live gesture recognition and hand detection system
-              </p>
-            </div>
+          <div class="showcase-gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; height: auto;">
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-              <img src="../../projects/project-6-gesture-recognition/img/Braccio.webp" alt="Braccio robotic arm" class="img-fluid glightbox">
+              <img src="../../projects/project-6-gesture-recognition/img/Braccio.webp" alt="Braccio robotic arm" class="img-fluid glightbox" style="object-fit: contain; height: 360px; width: 100%; min-height: 280px;">
               <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">
                 Braccio robotic arm with writing mechanism
               </p>
             </div>
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
-              <video style="width: 100%; border-radius: 8px;" controls>
+              <video style="width: 100%; height: 360px; border-radius: 12px; object-fit: contain; min-height: 280px;" controls>
                 <source src="../../projects/project-6-gesture-recognition/img/InShot201.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
               <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">
-                Project demonstration video - gesture to robotic output
+                Project demonstration - gesture to robotic output
               </p>
             </div>
           </div>
@@ -324,6 +320,8 @@
   <script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../../assets/js/main.js"></script>
+  <!-- Project Navigator JS -->
+  <script src="../../assets/js/project-navigator.js"></script>
 
 </body>
 

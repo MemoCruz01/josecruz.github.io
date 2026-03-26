@@ -157,9 +157,9 @@ document.addEventListener('keydown', function(e) {
       });
     });
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
+    isotopeItem.querySelectorAll('.portfolio-filters-horizontal li').forEach(function(filters) {
       filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+        isotopeItem.querySelector('.portfolio-filters-horizontal .filter-active').classList.remove('filter-active');
         this.classList.add('filter-active');
         initIsotope.arrange({
           filter: this.getAttribute('data-filter')

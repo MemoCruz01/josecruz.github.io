@@ -7,7 +7,7 @@
   <title>Interactive Robotics & ROS Navigation - Project Details</title>
   <meta name="description" content="ROS-based autonomous navigation system for TurtleBot 4 with sensor integration and real-world testing">
 
-  <link href="../../assets/img/favicon.png" rel="icon">
+  <link href="../../assets/img/FWorld_Icon.png" rel="icon">
   <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -19,6 +19,8 @@
   <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="../../assets/css/main.css" rel="stylesheet">
+  <!-- Project Navigator CSS -->
+  <link href="../../assets/css/project-navigator.css" rel="stylesheet">
 </head>
 
 <body class="portfolio-details-page">
@@ -40,7 +42,7 @@
         <li><a href="../../index.html#hero"><i class="bi bi-house navicon"></i>Home</a></li>
         <li><a href="../../index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
         <li><a href="../../index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="../../index.html#portfolio"><i class="bi bi-images navicon"></i> Portfolio Overview</a></li>
+        <li><a href="../../portfolio-details.html"><i class="bi bi-images navicon"></i> Portfolio Overview</a></li>
         <li><a href="../../index.html#honours"><i class="bi bi-award navicon"></i> Honors & Awards</a></li>
         <li><a href="../../index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
       </ul>
@@ -103,24 +105,22 @@
         </div>
 
         <div class="visual-showcase" data-aos="fade-up" data-aos-delay="100">
-          <div class="showcase-gallery">
-            <div class="gallery-item large" data-aos="zoom-in" data-aos-delay="150">
-              <img src="../../projects/project-5-ros-navigation/img/Navigation.webp" alt="ROS navigation environment" class="img-fluid glightbox">
-              <p style="text-align: center; margin-top: 1rem; color: #999; font-size: 0.9rem;">
-                ROS navigation environment and mapping system
-              </p>
+          <div class="showcase-gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; height: auto;">
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="150">
+              <img src="../../projects/project-5-ros-navigation/img/Navigation.webp" alt="ROS navigation environment" class="img-fluid glightbox" style="height: 360px; object-fit: contain; width: 100%; min-height: 280px;">
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">ROS navigation environment mapping</p>
             </div>
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-              <img src="../../projects/project-5-ros-navigation/img/Nodes.webp" alt="ROS node architecture" class="img-fluid glightbox">
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">
-                ROS node architecture and communication graph
-              </p>
+              <img src="../../projects/project-5-ros-navigation/img/Nodes.webp" alt="ROS node architecture" class="img-fluid glightbox" style="height: 360px; object-fit: contain; width: 100%; min-height: 280px;">
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">ROS node graph architecture</p>
             </div>
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
-              <img src="../../projects/project-5-ros-navigation/img/Nav.webp" alt="Path planning algorithm" class="img-fluid glightbox">
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">
-                Path planning and obstacle avoidance algorithm
-              </p>
+              <img src="../../projects/project-5-ros-navigation/img/Nav.webp" alt="Path planning algorithm" class="img-fluid glightbox" style="height: 360px; object-fit: contain; width: 100%; min-height: 280px;">
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Path planning visualization</p>
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+              <img src="../../projects/project-5-ros-navigation/img/Diseño PCB Tarjeta de Desarrollo.webp" alt="PCB design" class="img-fluid glightbox" style="height: 360px; object-fit: contain; width: 100%; min-height: 280px;">
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">PCB development board design</p>
             </div>
           </div>
         </div>
@@ -321,6 +321,8 @@
   <script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../../assets/js/main.js"></script>
+  <!-- Project Navigator JS -->
+  <script src="../../assets/js/project-navigator.js"></script>
 
 </body>
 
