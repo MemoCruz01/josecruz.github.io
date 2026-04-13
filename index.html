@@ -27,6 +27,62 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Force Header Always Visible -->
+  <style>
+    @media (max-width: 1199px) {
+      #header {
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 300px !important;
+        height: 100vh !important;
+        z-index: 999 !important;
+        display: flex !important;
+      }
+      
+      .header-toggle {
+        display: none !important;
+      }
+      
+      body {
+        margin-left: 300px !important;
+      }
+      
+      main {
+        margin-left: 0 !important;
+      }
+    }
+    
+    /* Custom Scrollbar for Header */
+    #header {
+      overflow-y: auto;
+    }
+    
+    #header::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    #header::-webkit-scrollbar-track {
+      background: rgba(243, 244, 246, 0.05);
+    }
+    
+    #header::-webkit-scrollbar-thumb {
+      background: #22e7a1;
+      border-radius: 4px;
+    }
+    
+    #header::-webkit-scrollbar-thumb:hover {
+      background: #1a9d7f;
+      cursor: pointer;
+    }
+    
+    /* Firefox Scrollbar */
+    #header {
+      scrollbar-color: #22e7a1 rgba(243, 244, 246, 0.05);
+      scrollbar-width: thin;
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: MyPage
   * Template URL: https://bootstrapmade.com/mypage-bootstrap-personal-template/
