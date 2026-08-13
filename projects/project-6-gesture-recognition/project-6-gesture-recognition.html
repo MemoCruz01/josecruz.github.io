@@ -121,6 +121,12 @@
                 Project demonstration - gesture to robotic output
               </p>
             </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300" style="grid-column: span 2;">
+              <img src="../../projects/project-6-gesture-recognition/img/Top Level Diagram of Communication Flow.webp" alt="System architecture communication flow" class="img-fluid glightbox" style="object-fit: contain; height: 380px; width: 100%; min-height: 300px; border-radius: 12px;">
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">
+                System Architecture: Perception-to-Action Pipeline with Human-in-Loop Confirmation
+              </p>
+            </div>
           </div>
         </div>
 
@@ -129,20 +135,21 @@
             <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
               <div class="main-content">
                 <h2>Project Overview</h2>
-                <p>This innovative project bridges human communication and robotics by creating a system that understands sign language gestures and translates them into precise robotic control commands. Conducted at Universität des Saarlandes in Germany, the project demonstrates the application of computer vision and machine learning in human-robot interaction.</p>
+                <p>This project developed an <strong>interactive human-robot system capable of recognizing German Sign Language finger-spelling and physically translating the detected gesture into a written letter using a robotic arm</strong>. Conducted at Universität des Saarlandes in Germany, the system combined <strong>computer vision, machine learning, embedded control, inverse kinematics, robotic manipulation, custom mechanical design, and a graphical user interface</strong> into a single end-to-end perception-decision-action platform. A camera continuously observes the user, a <strong>MobileNet CNN recognition model classifies</strong> the performed hand gesture, the user confirms the prediction through an additional gesture, and the corresponding character is transmitted to an <strong>Arduino-controlled Tinkerkit Braccio robotic arm</strong> that writes it on a whiteboard. The resulting prototype achieved an average <strong>80% recognition accuracy</strong> across the alphabet and produced <strong>recognizable robotic handwriting for 24 of 26 letters</strong>, demonstrating a complete perception-decision-action loop for interactive robotics.</p>
                 
-                <h3>Key Responsibilities</h3>
+                <h3>Engineering Disciplines & System Architecture</h3>
                 <ul>
-                  <li><strong>Computer Vision Development:</strong> Designed and implemented real-time hand detection and gesture recognition algorithms</li>
-                  <li><strong>Machine Learning Implementation:</strong> Trained and optimized ML models for accurate gesture classification</li>
-                  <li><strong>Gesture Analysis:</strong> Developed feature extraction techniques for hand pose and movement analysis</li>
-                  <li><strong>Robotic Integration:</strong> Created control interface between gesture recognition system and Braccio robotic arm</li>
-                  <li><strong>Writing Algorithm:</strong> Implemented kinematics solving and trajectory planning for arm writing</li>
-                  <li><strong>System Validation:</strong> Tested and refined system accuracy for reliable gesture interpretation</li>
+                  <li><strong>Human-Robot Interaction Design:</strong> Developed modular perception-to-action architecture separating perception, user interaction, communication, motion generation, and hardware control. Implemented human-in-the-loop confirmation mechanism where left-index-finger raise gesture confirms predictions before robotic execution.</li>
+                  <li><strong>Convolutional Neural Network Architecture:</strong> Implemented lightweight <strong>MobileNet CNN generated through Google Teachable Machine</strong>, trained using <strong>TensorFlow.js and transfer learning</strong>. Focused on 26 principal alphabet characters, replacing dynamic signs for J and Z with representative static poses for image-classification consistency.</li>
+                  <li><strong>Dataset Generation & Computer Vision Preprocessing:</strong> Generated custom training dataset with <strong>different users, backgrounds, and lighting conditions</strong>. Integrated <strong>Google MediaPipe Hands extracting 21 hand landmarks</strong> providing characteristic geometric information about finger and hand configuration. Preprocessed images through cropping to focus on hand regions and reduce background information.</li>
+                  <li><strong>Python-Based Interactive User Interface:</strong> Developed graphical interface displaying real-time camera stream with current machine-learning predictions. Incorporated deliberate human-in-the-loop confirmation protocol to reduce unintended robot actions from misclassifications. Confirmed letters displayed before robotic execution.</li>
+                  <li><strong>Robotic Arm Modification & End-Effector Design:</strong> Designed custom writing gripper through iterative mechanical development process using <strong>Autodesk Fusion 360 CAD</strong> and <strong>Ultimaker S5 3D printer</strong> additive manufacturing. Prototyped three different concepts before selecting configuration providing highest writing stability. Removed unnecessary servomotors when integrating redesigned tool.</li>
+                  <li><strong>Inverse Kinematics & Embedded Motion Control:</strong> Implemented <strong>inverse kinematics using CGx Inverse Kinematic library</strong>, translating desired Cartesian positions on whiteboard into angular values for Braccio servomotor joints. Used trigonometric relationships based on law of cosines and manipulator dimensions. Implemented <strong>USB serial communication between computer and Arduino UNO</strong> for robotic commands.</li>
+                  <li><strong>Robotic Handwriting Algorithm & Software Structure:</strong> Developed hierarchical motion-generation algorithm converting alphabet characters into executable robotic trajectories. Each character embedded inside predefined 2D square, decomposed into straight-line segments with individual drawing methods per letter. Implemented explicit drawing and non-drawing states through vertical pen movement.</li>
+                  <li><strong>Trajectory Discretization & Motion Accuracy Optimization:</strong> Discretized each line into intermediate waypoints at approximately <strong>1 mm intervals</strong> to force pen to remain close to desired Cartesian trajectory. Horizontal and vertical strokes generated through one-dimensional interpolation. Diagonal strokes approximated by alternating small horizontal and vertical movements. Experimentally compared multiple trajectory-generation strategies.</li>
+                  <li><strong>Experimental Validation & Confusion Matrix Analysis:</strong> Evaluated complete system through machine-learning classification tests and physical robotic-writing experiments. Calculated recognition accuracy using 10 test images per character (~80% average). Analyzed confusion matrix to identify systematic errors between visually similar signs. Physical testing identified mechanical backlash, limited robotic reach, joint play, and trajectory-transition errors as primary causes of handwriting inaccuracies.</li>
+                  <li><strong>Multidisciplinary Systems Integration:</strong> Synthesized computer vision, machine learning, embedded control, robotic kinematics, custom mechanical design, and graphical user interface into unified end-to-end system. Demonstrated hands-on experience in human-robot interaction, Python programming, CNN architectures, transfer learning, Arduino embedded control, CAD/additive manufacturing, and experimental validation methodologies.</li>
                 </ul>
-
-                <h3>Technical Implementation</h3>
-                <p>The system captures video input from a camera and processes it using computer vision techniques to detect hand positions and movements. Machine learning classifiers interpret these hand gestures as alphabetic characters or control commands. The recognized gestures are translated into coordinate data and passed to the Braccio robotic arm's control interface. The arm then moves according to trajectory planning algorithms to write the corresponding letters or words, demonstrating real-time human-robot communication.</p>
               </div>
             </div>
             <div class="col-lg-4 offset-lg-1" data-aos="fade-up" data-aos-delay="200">
@@ -160,20 +167,44 @@
                   <p>Oct 2022 - Mar 2023 (6 months)</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Hardware Platform</h5>
-                  <p>Braccio Robotic Arm</p>
+                  <h5>Robotic Platform</h5>
+                  <p>Tinkerkit Braccio + Arduino UNO</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Key Focus</h5>
-                  <p>Sign Language to Robotic Output</p>
+                  <h5>Recognition Accuracy</h5>
+                  <p>~80% (German Alphabet)</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Primary Language</h5>
-                  <p>Python + Machine Learning</p>
+                  <h5>Successfully Written Letters</h5>
+                  <p>24 of 26 (92%)</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Deliverables</h5>
-                  <p>Recognition System, Control Software, Testing Reports, Documentation</p>
+                  <h5>Neural Network Model</h5>
+                  <p>MobileNet CNN (TensorFlow.js)</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Hand Landmarks Extracted</h5>
+                  <p>21 Points (MediaPipe Hands)</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Training Dataset Size</h5>
+                  <p>~100 images per class (26 classes)</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Trajectory Discretization</h5>
+                  <p>~1 mm waypoints</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Writing Time per Letter</h5>
+                  <p>~40 seconds</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Primary Programming Language</h5>
+                  <p>Python + Arduino (C++)</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Key Deliverables</h5>
+                  <p>End-to-End HRI System, CNN Model, CAD Design, Control Software, Validation Reports, Confusion Matrix Analysis</p>
                 </div>
               </div>
             </div>
@@ -182,7 +213,7 @@
 
         <div class="process-timeline" data-aos="fade-up" data-aos-delay="100">
           <div class="timeline-header">
-            <h2>Development Process</h2>
+            <h2>Development Process & Engineering Workflow</h2>
           </div>
           <div class="timeline-steps">
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
@@ -190,8 +221,8 @@
                 <span class="step-number">1</span>
               </div>
               <div class="step-content">
-                <h4>Research & Design</h4>
-                <p>Researched gesture recognition techniques and designed system architecture for real-time processing</p>
+                <h4>System Architecture & Dataset Generation</h4>
+                <p>Designed modular perception-to-action architecture. Generated custom training dataset with <strong>different users, backgrounds, and lighting conditions</strong> for 26 German Sign Language alphabet characters. Collected ~100 images per class with visual variability to improve robustness.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
@@ -199,8 +230,8 @@
                 <span class="step-number">2</span>
               </div>
               <div class="step-content">
-                <h4>Vision & Feature Extraction</h4>
-                <p>Implemented computer vision for hand detection and developed feature extraction algorithms</p>
+                <h4>Computer Vision & Machine Learning Model Development</h4>
+                <p>Implemented <strong>Google MediaPipe Hands</strong> extracting 21 hand landmarks for geometric feature representation. Developed <strong>MobileNet CNN using Google Teachable Machine and TensorFlow.js transfer learning</strong>. Preprocessed images through cropping and landmark extraction. Trained model achieving ~80% recognition accuracy through iterative dataset and epoch expansion (40→100 images, 50→100 epochs).</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="250">
@@ -208,8 +239,8 @@
                 <span class="step-number">3</span>
               </div>
               <div class="step-content">
-                <h4>Model Training & Optimization</h4>
-                <p>Trained machine learning models on gesture datasets and optimized for real-time performance</p>
+                <h4>Mechanical Design & Robotic Integration</h4>
+                <p>Designed custom writing gripper through iterative mechanical development using <strong>Autodesk Fusion 360 CAD</strong>. Prototyped three concepts before selecting highest-stability configuration. Manufactured end-effector using <strong>Ultimaker S5 3D printer</strong>. Integrated with Tinkerkit Braccio arm and Arduino UNO. Implemented <strong>inverse kinematics using CGx library</strong> and <strong>USB serial communication</strong>.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
@@ -217,8 +248,17 @@
                 <span class="step-number">4</span>
               </div>
               <div class="step-content">
-                <h4>Integration & Testing</h4>
-                <p>Integrated robotic arm control and conducted comprehensive testing with real-time validation</p>
+                <h4>Software & Motion Algorithm Development</h4>
+                <p>Developed <strong>Python graphical user interface</strong> displaying real-time camera stream with ML predictions. Implemented human-in-the-loop confirmation protocol using left-index-finger gesture. Created hierarchical <strong>robotic handwriting algorithm</strong> converting alphabet characters into Cartesian trajectories. Implemented explicit drawing/non-drawing states and <strong>1 mm waypoint discretization</strong> for trajectory accuracy optimization.</p>
+              </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="350">
+              <div class="step-marker">
+                <span class="step-number">5</span>
+              </div>
+              <div class="step-content">
+                <h4>Experimental Validation & System Optimization</h4>
+                <p>Conducted machine-learning classification tests (10 test images per character). Performed physical robotic-writing experiments across all 26 letters. Generated <strong>confusion matrix analysis</strong> identifying systematic errors between visually similar signs. Identified mechanical backlash, limited robotic reach, and joint play as primary accuracy limitations. Successfully produced <strong>recognizable handwriting for 24 of 26 letters (92%)</strong>. Refined trajectory generation and motion parameters.</p>
               </div>
             </div>
           </div>
@@ -228,32 +268,52 @@
           <div class="row align-items-center">
             <div class="col-lg-5">
               <h2>Technologies & Tools</h2>
-              <p>Industry-standard computer vision and machine learning frameworks enabling gesture understanding and robotic control.</p>
+              <p>Comprehensive suite of computer vision, machine learning, robotics control, and embedded systems tools enabling end-to-end human-robot interaction.</p>
             </div>
             <div class="col-lg-6 offset-lg-1">
               <div class="tools-grid">
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="150">
-                  <h5>Computer Vision</h5>
+                  <h5>Computer Vision & ML</h5>
                   <div class="tool-list">
-                    <span class="tool-item">OpenCV</span>
-                    <span class="tool-item">Hand Detection</span>
-                    <span class="tool-item">Pose Estimation</span>
+                    <span class="tool-item">Google Teachable Machine</span>
+                    <span class="tool-item">TensorFlow.js</span>
+                    <span class="tool-item">MobileNet CNN Architecture</span>
+                    <span class="tool-item">MediaPipe Hands (21 landmarks)</span>
+                    <span class="tool-item">Transfer Learning</span>
+                    <span class="tool-item">Confusion Matrix Analysis</span>
                   </div>
                 </div>
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="200">
-                  <h5>Machine Learning</h5>
+                  <h5>Software & Interface</h5>
                   <div class="tool-list">
-                    <span class="tool-item">TensorFlow / PyTorch</span>
-                    <span class="tool-item">Gesture Classification</span>
-                    <span class="tool-item">Neural Networks</span>
+                    <span class="tool-item">Python GUI Framework</span>
+                    <span class="tool-item">Real-Time Camera Processing</span>
+                    <span class="tool-item">Human-in-Loop Confirmation</span>
+                    <span class="tool-item">Serial Communication Protocol</span>
+                    <span class="tool-item">Data Visualization</span>
+                    <span class="tool-item">ML Model Integration</span>
                   </div>
                 </div>
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="250">
-                  <h5>Robotic Control</h5>
+                  <h5>Robotics & Control</h5>
                   <div class="tool-list">
-                    <span class="tool-item">Python</span>
-                    <span class="tool-item">Braccio Control Library</span>
-                    <span class="tool-item">Kinematics Engine</span>
+                    <span class="tool-item">Arduino UNO Embedded Control</span>
+                    <span class="tool-item">CGx Inverse Kinematic Library</span>
+                    <span class="tool-item">Trajectory Discretization (1mm)</span>
+                    <span class="tool-item">Cartesian Waypoint Generation</span>
+                    <span class="tool-item">Servomotor Commands</span>
+                    <span class="tool-item">Joint Space Interpolation</span>
+                  </div>
+                </div>
+                <div class="tool-category" data-aos="fade-up" data-aos-delay="300">
+                  <h5>CAD & Manufacturing</h5>
+                  <div class="tool-list">
+                    <span class="tool-item">Autodesk Fusion 360 CAD</span>
+                    <span class="tool-item">3D Gripper Design</span>
+                    <span class="tool-item">Ultimaker S5 3D Printer</span>
+                    <span class="tool-item">Additive Manufacturing</span>
+                    <span class="tool-item">Mechanical Prototyping</span>
+                    <span class="tool-item">End-Effector Iteration</span>
                   </div>
                 </div>
               </div>
@@ -264,25 +324,41 @@
         <div class="impact-metrics" data-aos="fade-up" data-aos-delay="100">
           <div class="metrics-container">
             <div class="metrics-header">
-              <h2>Project Impact & Achievements</h2>
-              <p>Successfully demonstrated innovative human-robot interaction through gesture recognition, enabling new communication pathways between humans and robotic systems.</p>
+              <h2>Technical Achievements & Performance Metrics</h2>
+              <p>End-to-end human-robot interaction system demonstrating computer vision, machine learning, embedded control, inverse kinematics, mechanical design, and experimental validation.</p>
             </div>
             <div class="metrics-grid">
               <div class="metric-card" data-aos="fade-up" data-aos-delay="150">
-                <div class="metric-value">Real-Time</div>
-                <div class="metric-label">Gesture Recognition</div>
+                <div class="metric-value">~80%</div>
+                <div class="metric-label">Recognition Accuracy (Alphabet)</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="metric-value">6 Months</div>
-                <div class="metric-label">Project Duration</div>
+                <div class="metric-value">24/26</div>
+                <div class="metric-label">Letters with Recognizable Handwriting</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="250">
-                <div class="metric-value">High Accuracy</div>
-                <div class="metric-label">Sign Language Interpretation</div>
+                <div class="metric-value">21</div>
+                <div class="metric-label">Hand Landmarks (MediaPipe)</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="metric-value">Innovative</div>
-                <div class="metric-label">HRI Application</div>
+                <div class="metric-value">~100</div>
+                <div class="metric-label">Images per Class (Training)</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="350">
+                <div class="metric-value">~1 mm</div>
+                <div class="metric-label">Waypoint Discretization</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="metric-value">~40 sec</div>
+                <div class="metric-label">Writing Time per Letter</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="450">
+                <div class="metric-value">5</div>
+                <div class="metric-label">Engineering Phases</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="metric-value">3</div>
+                <div class="metric-label">End-Effector Prototypes</div>
               </div>
             </div>
           </div>
