@@ -106,37 +106,15 @@
           </div>
         </div>
 
-        <div class="visual-showcase" data-aos="fade-up" data-aos-delay="100">
-          <div class="showcase-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; height: auto;">
-            <div class="gallery-item large" data-aos="zoom-in" data-aos-delay="150" style="grid-column: span 3;">
+        <div class="visual-showcase" data-aos="fade-up" data-aos-delay="100" style="margin-bottom: -2rem; margin-top: 2rem; padding: 2rem 0;">
+          <div class="showcase-gallery" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; height: auto;">
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="150">
               <img src="../../projects/project-2-ev-assembly/img/MountingStation.webp" alt="Precision mounting station" class="img-fluid glightbox" style="height: 380px; object-fit: contain; width: 100%; min-height: 300px;">
-              <p style="text-align: center; margin-top: 1rem; color: #999; font-size: 0.9rem;">Precision mounting station for EV assembly</p>
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Precision mounting station for EV assembly</p>
             </div>
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-              <img src="../../projects/project-2-ev-assembly/img/DollyCAD.webp" alt="Dolly assembly carriage" class="img-fluid glightbox" style="height: 300px; object-fit: contain; width: 100%; min-height: 250px;">
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Assembly dolly carriage</p>
-            </div>
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
-              <img src="../../projects/project-2-ev-assembly/img/LineFlow.webp" alt="Production line flow" class="img-fluid glightbox" style="height: 300px; object-fit: contain; width: 100%; min-height: 250px;">
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Assembly line flow diagram</p>
-            </div>
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-              <img src="../../projects/project-2-ev-assembly/img/WhatsApp Image 2022-03-08 at 18.51.38.webp" alt="Production environment" class="img-fluid glightbox" style="height: 300px; object-fit: contain; width: 100%; min-height: 250px;">
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Production facility and setup</p>
-            </div>
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="350">
-              <video style="width: 100%; height: 300px; border-radius: 12px; object-fit: contain; min-height: 250px;" controls autoplay muted>
-                <source src="../../projects/project-2-ev-assembly/img/RobotStudio 3-8_trim.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">RobotStudio simulation animation</p>
-            </div>
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="375">
-              <video style="width: 100%; height: 300px; border-radius: 12px; object-fit: contain; min-height: 250px;" controls autoplay muted>
-                <source src="../../projects/project-2-ev-assembly/img/RobotStudio 3-17 - Trim.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Advanced RobotStudio sequence</p>
+              <img src="../../projects/project-2-ev-assembly/img/LineFlow.webp" alt="Production line flow" class="img-fluid glightbox" style="height: 300px; object-fit: contain; width: 100%; min-height: 240px;">
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Assembly line flow and station layout</p>
             </div>
           </div>
         </div>
@@ -146,20 +124,37 @@
             <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
               <div class="main-content">
                 <h2>Project Overview</h2>
-                <p>This project involved the comprehensive digital design of a production line for semi-automatic electric vehicle assembly. Working at original size specifications with CAD modeling, the project optimized efficiency while reducing overall production costs significantly.</p>
+                <p>This project consisted of the <strong>design and validation of an automated assembly line for Giant Motors Latinoamérica (GML)</strong> for the production of the JAC E10X electric vehicle. Developed over a 15-week engineering project, the objective was to design a manufacturing system capable of producing initially <strong>20 vehicles per production shift</strong>, with future scalability toward 30 and 40 units. The scope concentrated on three major assembly areas: <strong>Station 50 for the powertrain and axles, Station 60 for battery and wheel assembly, and Station 70 for high-voltage controllers</strong>.</p>
                 
-                <h3>Key Responsibilities</h3>
-                <ul>
-                  <li><strong>Production Line Design:</strong> Created full-scale CAD models of the assembly line with detailed robotic stations</li>
-                  <li><strong>Team Coordination:</strong> Led and coordinated 34 mechatronics students across multiple design phases</li>
-                  <li><strong>PLM Optimization:</strong> Streamlined Product Lifecycle Management phases to improve workflow efficiency</li>
-                  <li><strong>Budget Management:</strong> Reduced original budget from €490,000 while maintaining quality standards</li>
-                  <li><strong>Robot Programming:</strong> Configured and programmed ABB industrial robots using RobotStudio</li>
-                  <li><strong>Virtual Commissioning:</strong> Simulated production processes to validate design before physical implementation</li>
-                </ul>
+                <h3>System Requirements & Manufacturing Constraints</h3>
+                <p>The solution had to comply with industrial constraints including a <strong>56 × 24 m available production area</strong>, defined operating times, safety requirements, existing factory infrastructure, and a maximum project budget of <strong>MXN 10 million</strong>. This established the project as a multidisciplinary optimization problem involving <strong>manufacturing engineering, robotics, automation, mechanical design, logistics, and economic feasibility</strong>. Multiple automation concepts were generated for each station and compared according to cycle time, cost, technical feasibility, ergonomics, maintainability, and compatibility with existing GML equipment.</p>
+                
+                <h3>Engineering Methodology</h3>
+                <p>The manufacturing system was developed through an <strong>iterative engineering methodology combining benchmarking, concept generation, quantitative evaluation, simulation, and feedback from the industrial partner</strong>. This resulted in a systematic <strong>concept → evaluate → simulate → obtain feedback → redesign</strong> workflow. Decision-making methodologies included <strong>SWOT analysis, critical-path analysis, production-line balancing, heuristic balancing rules, weighted criteria, BOM analysis, and supplier benchmarking</strong>, creating a structured engineering process from initial requirements through implementation planning.</p>
 
-                <h3>Technical Implementation</h3>
-                <p>The assembly line design integrates multiple robotic stations for efficient EV component assembly. Using advanced CAD tools and RobotStudio simulation, the design optimizes production flow while ensuring quality control. The project demonstrates how digital design and process optimization can significantly reduce production costs without compromising output quality.</p>
+                <h3>Manufacturing Automation Architecture</h3>
+                <p>Several material-flow architectures were investigated, including conventional conveyors and an <strong>AGV-based flexible production system</strong>. The AGV concept allowed individual stations to operate with greater independence instead of forcing every workstation to advance simultaneously. The automation level incorporated <strong>PLCs, HMIs, industrial sensors, safety interlocks, emergency stops, conveyors, and AGV control</strong>, allowing sequence control, position detection, speed regulation, material tracking, and operator interaction. This modular architecture was designed to improve flexibility and permit future modifications to routes, stations, or product variants.</p>
+
+                <h3>Station 50 – Powertrain and Axle Assembly</h3>
+                <p>Station 50 focused on the assembly and installation of the <strong>front axle, rear axle, and motor/powertrain assemblies</strong>. Different robotic and conveyor-based configurations were studied before converging on a solution that exploited existing GML infrastructure such as the production conveyor, two-post vehicle lifts, lifting tables, and dollies. The vehicle body is transported into the workstation and elevated, while the respective powertrain subassemblies are positioned underneath the chassis using dedicated fixtures and handling equipment before fastening. Material transport, component positioning, operator tasks, and tooling were analyzed as a synchronized process rather than independent operations. <strong>Critical-path and line-balancing methods</strong> identified bottlenecks, resulting in a division of Station 50 into <strong>50.1 for the rear axle and 50.2 for the motor/front-axle assembly</strong>, producing an overall assembly-line cycle time of approximately <strong>26 minutes</strong>.</p>
+
+                <h3>Station 60 – Battery and Wheel Automation</h3>
+                <p>Station 60 integrated the installation of the <strong>300 kg high-voltage battery and the four wheels</strong>. Initial concepts investigated ABB robotic arms for automated fastening, machine-vision systems, automated wheel handling, and a converted trolley acting as an AGV. Robot selection was performed from functional requirements: the battery-fastening robot required at least 1.2 m reach and sufficient payload for the fastening tool, resulting in the evaluation and selection of an <strong>ABB IRB 1600</strong> with 1.45 m reach and 10 kg payload. A fastening tool capable of achieving the specified <strong>120 Nm battery-bolt torque</strong> was also selected. After industrial feedback and cost evaluation, the station evolved toward a hybrid solution combining automation with operator-assisted processes, producing an estimated Station 60 cycle time of <strong>28.22 minutes</strong>.</p>
+
+                <h3>AGV Kinematics, Trajectory Modeling & Vision Systems</h3>
+                <p>For battery transportation and alignment, an existing trolley concept was redesigned as a mobile robotic platform using <strong>differential-drive kinematics with two independently driven motors</strong>. Opposite wheel velocities enabled nearly zero-radius rotation, improving maneuverability in constrained production areas. Vehicle trajectories were modeled in <strong>MATLAB</strong> using the scaled factory layout, initial and final positions, and the geometric behavior of the differential-drive platform. The proposal additionally integrated <strong>Cognex industrial vision cameras</strong> to improve automatic alignment between the battery fixture, AGV, and vehicle chassis. Sensors for magnetic-line tracking, end positions, hydraulic mechanisms, and programmable control were incorporated into the architecture, connecting mobile robotics concepts—kinematics, path planning, localization, sensing, and control—with practical industrial material-handling applications.</p>
+
+                <h3>Station 70 – Semi-Automated Human-Centered Assembly</h3>
+                <p>Station 70 addressed installation of the vehicle's <strong>high-voltage electronic controllers</strong>. Fully robotic pick-and-place solutions using ABB robots and Cartesian manipulators were initially investigated, but reach requirements, additional infrastructure, interference risks, and implementation costs made complete automation less attractive. Based on GML feedback, the design was transformed into a <strong>semi-automated workstation</strong> centered on operator ergonomics and process efficiency. A <strong>vacuum lifter on a guided rail</strong> allows controllers weighing up to approximately 30 kg to be transferred from dedicated racks to the vehicle without requiring manual lifting. A second operator performs the fastening operation while logistics are simplified through strategically positioned buffers. This trade-off demonstrates an important manufacturing principle: the technically most automated solution is not necessarily the most appropriate industrial solution.</p>
+
+                <h3>CAD, Fixture Design & Finite Element Analysis</h3>
+                <p>Custom manufacturing fixtures were developed and validated using <strong>SolidWorks CAD and Finite Element Analysis (FEA)</strong>. A dedicated battery JIG was designed to guarantee repeatable positioning during transportation, lifting, and chassis alignment. Design selection incorporated <strong>SWOT analysis, manufacturability, cost, safety, and compatibility with the AGV/trolley architecture</strong>. The battery JIG was analyzed using ASTM A36 steel under a 300 kg battery load and a <strong>1.3 safety factor</strong> (approximately 3.83 kN). Initial FEA revealed yielding around hoist attachment holes, leading to iterative redesign that increased critical thicknesses. The final static analysis produced a maximum Von Mises stress of approximately <strong>175.8 MPa versus a 250 MPa material yield strength</strong>, validating the modified geometry. Similar simulation-driven redesign was performed for the motor/front-axle fixture, including material comparison and load-distribution studies.</p>
+
+                <h3>Digital Manufacturing & Simulation Validation</h3>
+                <p>The complete manufacturing concept was validated digitally before physical implementation using complementary simulation environments. <strong>ABB RobotStudio</strong> was used to model robotic workcells, verify robot reach, evaluate trajectories, estimate operation times and speeds, visualize safety envelopes, and demonstrate interaction between robots, fixtures, operators, and vehicles. The integrated three-station model was also adapted into a <strong>virtual-reality demonstration</strong> for GML. At the factory level, <strong>Siemens Tecnomatix Plant Simulation</strong> was used as a discrete-event manufacturing model containing sources, assembly stations, drains, operators, transportation systems, processing times, and workstation statistics. Unlike the robot-level simulation, Tecnomatix enabled quantitative evaluation of throughput, utilization, waiting times, bottlenecks, and cycle-time modifications, turning the digital model into a decision-support tool for line optimization.</p>
+
+                <h3>Production Optimization & Project Outcomes</h3>
+                <p>The final stage combined <strong>cycle-time optimization, line balancing, economic analysis, and manufacturing feasibility</strong>. Tecnomatix simulations were used to test alternative processing times and identify stations with the strongest influence on throughput. Optimized scenarios exceeded the original target of 20 vehicles per shift, with evaluated configurations producing approximately <strong>24–27 vehicles per shift</strong>. The complete proposed equipment budget for Stations 50, 60, and 70 was approximately <strong>MXN 2.30 million</strong>, requiring 12 operators and remaining substantially below the original MXN 10 million project constraint. Overall, the project demonstrated a complete industrial-engineering workflow involving <strong>manufacturing automation, industrial robotics, PLC/HMI architecture, AGV systems, MATLAB trajectory modeling, machine vision, SolidWorks CAD/FEA, fixture design, RobotStudio, Siemens Tecnomatix, discrete-event simulation, critical-path analysis, line balancing, BOM development, supplier benchmarking, design-for-manufacturing, ergonomics, and cost optimization</strong>, resulting in a technically feasible proposal for future implementation at GML.</p>
               </div>
             </div>
             <div class="col-lg-4 offset-lg-1" data-aos="fade-up" data-aos-delay="200">
@@ -169,37 +164,67 @@
                   <p>Giant Motors Latinoamérica & JAC Motors</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Timeline</h5>
-                  <p>Feb 2022 - Jun 2022 (5 months)</p>
+                  <h5>Location</h5>
+                  <p>Toluca, Mexico</p>
                 </div>
                 <div class="spec-item">
-                  <h5>My Role</h5>
-                  <p>Robotic Automation Programmer</p>
+                  <h5>Timeline</h5>
+                  <p>Feb 2022 - Jun 2022 (15 weeks)</p>
                 </div>
                 <div class="spec-item">
                   <h5>Team Size</h5>
-                  <p>34 Mechatronics Students Coordinated</p>
+                  <p>34 Mechatronics Students</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Original Budget</h5>
-                  <p>€490,000</p>
+                  <h5>Production Target</h5>
+                  <p>20 vehicles/shift (achieved 24-27)</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Achievement</h5>
-                  <p>Significant Budget Reduction</p>
+                  <h5>Project Budget</h5>
+                  <p>MXN 10 million max</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Equipment Budget</h5>
+                  <p>MXN 2.30 million (23% of limit)</p>
                 </div>
                 <div class="spec-item">
                   <h5>Deliverables</h5>
-                  <p>Full-Scale CAD Design, RobotStudio Simulation, Documentation</p>
+                  <p>CAD Models, RobotStudio Simulation, Tecnomatix Analysis, Documentation</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="process-timeline" data-aos="fade-up" data-aos-delay="100">
+        <div class="additional-showcase" data-aos="fade-up" data-aos-delay="100" style="margin-top: 3rem; margin-bottom: 3rem;">
+          <h2 style="margin-bottom: 2rem;">Design & Simulation Gallery</h2>
+          <div class="showcase-gallery" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto;">
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
+              <img src="../../projects/project-2-ev-assembly/img/DollyCAD.webp" alt="Dolly assembly carriage" class="img-fluid glightbox" style="height: 300px; object-fit: contain; width: 100%; min-height: 250px;">
+              <p style="text-align: center; margin-top: 1rem; color: #999; font-size: 0.9rem;">AGV/Dolly design with differential-drive kinematics for flexible material transport</p>
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+              <img src="../../projects/project-2-ev-assembly/img/WhatsApp Image 2022-03-08 at 18.51.38.webp" alt="Production environment" class="img-fluid glightbox" style="height: 300px; object-fit: contain; width: 100%; min-height: 250px;">
+              <p style="text-align: center; margin-top: 1rem; color: #999; font-size: 0.9rem;">Production facility layout and equipment integration</p>
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
+              <video style="width: 100%; height: 300px; border-radius: 12px; object-fit: contain; min-height: 250px;" controls autoplay muted>
+                <source src="../../projects/project-2-ev-assembly/img/RobotStudio 3-8_trim.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p style="text-align: center; margin-top: 1rem; color: #999; font-size: 0.9rem;">RobotStudio simulation: Robotic workcell dynamics and motion optimization</p>
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+              <video style="width: 100%; height: 300px; border-radius: 12px; object-fit: contain; min-height: 250px;" controls autoplay muted>
+                <source src="../../projects/project-2-ev-assembly/img/RobotStudio 3-17 - Trim.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p style="text-align: center; margin-top: 1rem; color: #999; font-size: 0.9rem;">Advanced RobotStudio sequence: Complete assembly operation walkthrough</p>
+            </div>
+          </div>
+        </div>
           <div class="timeline-header">
-            <h2>Development Process</h2>
+            <h2>Development Process & Engineering Workflow</h2>
           </div>
           <div class="timeline-steps">
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
@@ -207,8 +232,8 @@
                 <span class="step-number">1</span>
               </div>
               <div class="step-content">
-                <h4>Requirements & Planning</h4>
-                <p>Defined assembly line specifications, created production timeline, and established budget parameters</p>
+                <h4>Requirements Analysis & Concept Generation</h4>
+                <p>Defined assembly line specifications including 56 × 24 m production area, 20 vehicle/shift target, MXN 10M budget limit, and three assembly stations (50, 60, 70). Generated multiple automation concepts for each station using <strong>SWOT analysis, critical-path analysis, and weighted evaluation criteria</strong> comparing cycle time, cost, technical feasibility, ergonomics, and compatibility with existing GML infrastructure.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
@@ -216,8 +241,8 @@
                 <span class="step-number">2</span>
               </div>
               <div class="step-content">
-                <h4>CAD Modeling & Design</h4>
-                <p>Designed full-scale assembly line with robotic stations and conveyor systems</p>
+                <h4>CAD Modeling, Design, & Fixture Development</h4>
+                <p>Designed full-scale assembly line in <strong>SolidWorks</strong> with robotic stations, conveyors, AGV systems, and custom manufacturing fixtures. Developed battery JIG and motor/front-axle fixture with <strong>Finite Element Analysis (FEA)</strong> validation using ASTM A36 steel and 1.3 safety factor. Modeled AGV kinematics using <strong>differential-drive</strong> platform with <strong>MATLAB trajectory modeling</strong> for factory-scale path planning and maneuverability analysis.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="250">
@@ -225,8 +250,8 @@
                 <span class="step-number">3</span>
               </div>
               <div class="step-content">
-                <h4>Robot Configuration</h4>
-                <p>Programmed ABB robots in RobotStudio and optimized motion sequences</p>
+                <h4>Robot Selection, Programming & Simulation</h4>
+                <p>Evaluated and selected <strong>ABB IRB 1600</strong> robot (1.45 m reach, 10 kg payload) for battery-fastening operations with <strong>120 Nm torque</strong> capability. Programmed robotic motion sequences in <strong>RobotStudio</strong>, modeled workcells with safety envelopes, and created virtual-reality demonstration for GML. Integrated <strong>Cognex vision systems</strong> for automatic alignment between battery fixture, AGV, and vehicle chassis.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
@@ -234,43 +259,61 @@
                 <span class="step-number">4</span>
               </div>
               <div class="step-content">
-                <h4>Optimization & Validation</h4>
-                <p>Optimized PLM phases, validated design efficiency, and documented complete assembly process</p>
+                <h4>Production Simulation, Optimization & Validation</h4>
+                <p>Built complete manufacturing model in <strong>Siemens Tecnomatix Plant Simulation</strong> as a discrete-event system including sources, stations, drains, operators, transportation, and processing times. Executed iterative simulations testing alternative cycle times and identifying throughput bottlenecks. Optimized line balancing using <strong>critical-path analysis and heuristic balancing rules</strong>, achieving <strong>24–27 vehicles/shift (vs 20-unit target)</strong> with equipment budget of <strong>MXN 2.30 million (23% of MXN 10M limit)</strong> and 12 operators required.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tools-section" data-aos="fade-up" data-aos-delay="100">
-          <div class="row align-items-center">
-            <div class="col-lg-5">
-              <h2>Technologies & Tools</h2>
-              <p>Industry-standard CAD and robotics programming tools were employed to ensure compatibility with modern manufacturing systems.</p>
-            </div>
-            <div class="col-lg-6 offset-lg-1">
-              <div class="tools-grid">
+        <div class="tools-section" data-aos="fade-up" data-aos-delay="100" style="margin-top: 3rem; margin-bottom: 3rem;">
+          <h2 style="margin-bottom: 2rem;">Technologies & Tools</h2>
+          <p style="margin-bottom: 2rem;">Industry-standard CAD, robotics programming, simulation, and automation tools were employed to ensure compatibility with modern manufacturing systems and enable comprehensive digital validation before physical implementation.</p>
+          <div class="row align-items-start">
+            <div class="col-lg-12">
+              <div class="tools-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="150">
                   <h5>CAD & Design</h5>
                   <div class="tool-list">
-                    <span class="tool-item">SolidWorks / NX CAD</span>
-                    <span class="tool-item">CAD Modeling</span>
-                    <span class="tool-item">Assembly Design</span>
+                    <span class="tool-item">SolidWorks CAD Modeling</span>
+                    <span class="tool-item">Full-Scale Assembly Design</span>
+                    <span class="tool-item">Fixture & Jig Design</span>
+                    <span class="tool-item">SolidWorks FEA (Finite Element Analysis)</span>
+                    <span class="tool-item">ASTM A36 Steel Analysis</span>
+                    <span class="tool-item">Design-for-Manufacturing (DFM)</span>
                   </div>
                 </div>
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="200">
                   <h5>Robotics & Automation</h5>
                   <div class="tool-list">
                     <span class="tool-item">ABB RobotStudio</span>
-                    <span class="tool-item">Robot Programming</span>
-                    <span class="tool-item">Motion Optimization</span>
+                    <span class="tool-item">ABB IRB 1600 Robot</span>
+                    <span class="tool-item">Robot Motion Programming</span>
+                    <span class="tool-item">Safety Envelope Verification</span>
+                    <span class="tool-item">Trajectory Optimization</span>
+                    <span class="tool-item">Reach & Payload Analysis</span>
                   </div>
                 </div>
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="250">
-                  <h5>Process Management</h5>
+                  <h5>Simulation & Analysis</h5>
                   <div class="tool-list">
-                    <span class="tool-item">PLM Systems</span>
-                    <span class="tool-item">Project Coordination</span>
-                    <span class="tool-item">Documentation</span>
+                    <span class="tool-item">Siemens Tecnomatix Plant Simulation</span>
+                    <span class="tool-item">Discrete-Event Simulation</span>
+                    <span class="tool-item">Throughput Analysis</span>
+                    <span class="tool-item">Line Balancing & Optimization</span>
+                    <span class="tool-item">MATLAB Trajectory Modeling</span>
+                    <span class="tool-item">Critical-Path Analysis</span>
+                  </div>
+                </div>
+                <div class="tool-category" data-aos="fade-up" data-aos-delay="300">
+                  <h5>Manufacturing & Control</h5>
+                  <div class="tool-list">
+                    <span class="tool-item">PLC Programming & Control</span>
+                    <span class="tool-item">HMI (Human-Machine Interface)</span>
+                    <span class="tool-item">Cognex Vision Systems</span>
+                    <span class="tool-item">Magnetic-Line AGV Guidance</span>
+                    <span class="tool-item">Conveyor Systems</span>
+                    <span class="tool-item">Virtual Reality Demonstration</span>
                   </div>
                 </div>
               </div>
@@ -281,25 +324,25 @@
         <div class="impact-metrics" data-aos="fade-up" data-aos-delay="100">
           <div class="metrics-container">
             <div class="metrics-header">
-              <h2>Project Impact & Achievements</h2>
-              <p>Successfully delivered a comprehensive assembly line design that optimized production processes and achieved significant cost savings.</p>
+              <h2>Technical Achievements & Project Outcomes</h2>
+              <p>Successfully delivered a comprehensive engineering design for an automated EV assembly line that exceeded production targets while maintaining budget constraints. The project demonstrated a complete industrial-engineering workflow from requirements analysis through optimization and validation.</p>
             </div>
             <div class="metrics-grid">
               <div class="metric-card" data-aos="fade-up" data-aos-delay="150">
-                <div class="metric-value">34</div>
-                <div class="metric-label">Team Members Coordinated</div>
+                <div class="metric-value">24-27</div>
+                <div class="metric-label">Vehicles/Shift (vs 20 target)</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="metric-value">€490K</div>
-                <div class="metric-label">Original Budget</div>
+                <div class="metric-value">MXN 2.3M</div>
+                <div class="metric-label">Equipment Budget (23% of limit)</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="250">
-                <div class="metric-value">5 Months</div>
-                <div class="metric-label">Project Duration</div>
+                <div class="metric-value">3</div>
+                <div class="metric-label">Assembly Stations Optimized</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="metric-value">100%</div>
-                <div class="metric-label">Quality Maintained</div>
+                <div class="metric-value">34</div>
+                <div class="metric-label">Engineers Coordinated</div>
               </div>
             </div>
           </div>
