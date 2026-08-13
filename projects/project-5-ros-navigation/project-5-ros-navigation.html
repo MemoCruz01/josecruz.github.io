@@ -120,7 +120,11 @@
             </div>
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
               <img src="../../projects/project-5-ros-navigation/img/Diseño PCB Tarjeta de Desarrollo.webp" alt="PCB design" class="img-fluid glightbox" style="height: 360px; object-fit: contain; width: 100%; min-height: 280px;">
-              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">PCB development board design</p>
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">Custom-designed PCB development board (self-made for this project)</p>
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="350" style="grid-column: span 2;">
+              <img src="../../projects/project-5-ros-navigation/img/RRT_Exploration.webp" alt="RRT path planning" class="img-fluid glightbox" style="height: 380px; object-fit: contain; width: 100%; min-height: 300px; border-radius: 12px;">
+              <p style="text-align: center; margin-top: 0.5rem; color: #999; font-size: 0.9rem;">RRT* Sampling-Based Path Planning & Exploration Algorithm</p>
             </div>
           </div>
         </div>
@@ -130,20 +134,21 @@
             <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
               <div class="main-content">
                 <h2>Project Overview</h2>
-                <p>This project involved the complete design and implementation of an autonomous navigation system for mobile robots operating in real-world environments. Conducted in Bourges, France, the project focused on creating a robust ROS-based architecture capable of handling dynamic obstacles, sensor uncertainty, and real-time decision making.</p>
+                <p>This project focused on the development and evaluation of a <strong>ROS 2-based autonomous navigation pipeline for mobile robotic platforms</strong>, integrating environmental perception, mapping, localization, global path planning, local trajectory generation, and obstacle avoidance. Conducted in Bourges, France, the objective was to create a <strong>modular navigation architecture capable of transforming raw sensor information and a desired target pose into safe motion commands</strong> while continuously estimating the robot's state and adapting its trajectory to the surrounding environment. The project emphasized real-world validation in dynamic indoor and industrial settings.</p>
                 
-                <h3>Key Responsibilities</h3>
+                <h3>ROS 2 System Architecture & Modular Design</h3>
                 <ul>
-                  <li><strong>ROS Architecture:</strong> Designed and implemented complete ROS navigation stack for TurtleBot 4</li>
-                  <li><strong>SLAM Implementation:</strong> Developed Simultaneous Localization and Mapping algorithms for dynamic environments</li>
-                  <li><strong>Sensor Integration:</strong> Integrated multiple sensors including LiDAR, cameras, and IMU units</li>
-                  <li><strong>Path Planning:</strong> Implemented motion planning algorithms for obstacle avoidance and efficient trajectory generation</li>
-                  <li><strong>Real-World Testing:</strong> Conducted extensive testing in dynamic environments with validation and refinement</li>
-                  <li><strong>Performance Optimization:</strong> Optimized computational efficiency for real-time navigation processing</li>
+                  <li><strong>Distributed ROS 2 System:</strong> Software structured as a distributed robotic system where sensing, localization, planning, visualization, and control components communicate through standardized topics, messages, and coordinate transformations. Emphasized interaction between global <code>map</code> reference frame, local odometry frame, robot <code>base_link</code>, and sensor reference frames. Modular structure allowed navigation components to be evaluated independently while maintaining clear interfaces between perception, planning, and motion-control subsystems.</li>
+                  <li><strong>Multi-Sensor Perception & Data Fusion:</strong> Integrated <strong>LiDAR, camera, IMU, and odometry</strong> information providing complementary perception of robot and environment. LiDAR measurements used for geometric obstacle perception and mapping, while inertial and odometric measurements supported robot-motion estimation. Camera provided additional perception modality for object and environment interpretation. Heterogeneous sensor integration provided practical experience with sensor interfaces, coordinate frames, timing, data quality, and perception challenges.</li>
+                  <li><strong>SLAM & Localization:</strong> Implemented <strong>Simultaneous Localization and Mapping (SLAM)</strong> to construct environmental representation while simultaneously estimating robot pose. Generated map formed global reference used by navigation pipeline. For navigation inside existing maps, localization methods continuously estimated robot position and orientation from sensor observations and motion information. Required understanding interaction between mapping accuracy, odometry drift, sensor uncertainty, coordinate transformations, and navigation performance.</li>
+                  <li><strong>Global Motion Planning Strategies:</strong> Explored graph- and sampling-based planning approaches including <strong>Dijkstra and RRT*</strong>. Dijkstra provided deterministic shortest-path search over structured environmental representations. RRT* offered sampling-based alternative capable of exploring configuration space and progressively improving candidate trajectories. Implementing and comparing different strategies provided insight into trade-offs between optimality, computation time, environmental complexity, and path geometry.</li>
+                  <li><strong>Local Planning & Obstacle Avoidance:</strong> Implemented <strong>Dynamic Window Approach (DWA)</strong>-based local navigation strategy continuously evaluating feasible robot motions while respecting local obstacles and kinematic limitations. Local planner generated short-horizon velocity commands according to robot's immediate surroundings and updated trajectory when environmental conditions changed. Separation between global path generation and local reactive control enabled navigation toward long-term objective while responding to nearby obstacles.</li>
+                  <li><strong>Dynamic Navigation & Real-Time Replanning:</strong> Evaluated navigation system under indoor scenarios with static environmental structures and changing obstacle configurations. Rather than assuming completely known and stationary world, architecture allowed local perception information to modify navigation behavior as robot moved. When trajectory became unsuitable, navigation pipeline could update local motion strategy or calculate alternative route, demonstrating importance of closed-loop perception and replanning.</li>
+                  <li><strong>Custom PCB Development & Hardware Integration:</strong> Designed and fabricated <strong>custom PCB specifically for this project</strong>, providing sensor interface board and power distribution for integrated LiDAR, camera, and IMU systems. Self-designed development board enabled optimized sensor integration, reduced wiring complexity, and provided dedicated power conditioning. PCB served as interface between TurtleBot 4 main platform and external sensor suite, demonstrating practical experience in electronic design, PCB layout, manufacturing, and hardware-software integration.</li>
+                  <li><strong>RViz Visualization & Debugging:</strong> Extensively used <strong>RViz</strong> to visualize robot model, sensor measurements, coordinate transforms, generated maps, localization estimates, planned trajectories, and navigation targets. Visualization critical for debugging distributed robotic system because failures could originate from sensor configuration, incorrect transforms, localization errors, planner parameters, or control behavior. Systematic visualization of intermediate outputs enabled individual subsystems to be validated before evaluating complete navigation pipeline.</li>
+                  <li><strong>Physical and Simulated Integration:</strong> Included navigation work with mobile robotic platforms such as <strong>AGV/TurtleBot-type systems</strong>, connecting algorithmic development to physical robot behavior. Considered practical limitations absent from purely theoretical planning, including sensor noise, wheel slip, imperfect odometry, restricted computational resources, communication timing, actuator dynamics, and differences between modeled and real environments. Emphasized not only successful path generation but reliable integration between software and physical robotic hardware.</li>
+                  <li><strong>Engineering Integration Outcomes:</strong> Provided practical experience across complete autonomous-navigation stack, including <strong>ROS 2, mobile robotics, LiDAR perception, IMU and odometry processing, SLAM, localization, sensor integration, TF coordinate transformations, occupancy maps, global and local costmaps, Dijkstra, RRT*, DWA, trajectory generation, obstacle avoidance, RViz visualization, PCB design, debugging, and physical robot validation</strong>. Strengthened experience in modular robotic software architecture and systems integration where perception, state estimation, planning, and control operate together reliably for autonomous navigation in real environments.</li>
                 </ul>
-
-                <h3>Technical Implementation</h3>
-                <p>The navigation system integrates sensor fusion techniques to combine data from LiDAR, cameras, and inertial sensors. SLAM algorithms create dynamic maps of the environment while simultaneously determining robot position. Path planning modules use algorithms like RRT* and Dijkstra's for efficient navigation. The system handles real-time obstacle detection, dynamic obstacle avoidance, and continuous route optimization.</p>
               </div>
             </div>
             <div class="col-lg-4 offset-lg-1" data-aos="fade-up" data-aos-delay="200">
@@ -161,20 +166,44 @@
                   <p>TurtleBot 4 Mobile Robot</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Key Focus</h5>
-                  <p>Autonomous Navigation Pipeline</p>
+                  <h5>Software Framework</h5>
+                  <p>ROS 2 Navigation Stack</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Primary Sensors</h5>
+                  <p>LiDAR, RGB Camera, IMU, Odometry</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Custom Hardware</h5>
+                  <p>Self-Designed PCB Development Board</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Global Planning Algorithms</h5>
+                  <p>Dijkstra, RRT* Sampling-Based</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Local Planner</h5>
+                  <p>Dynamic Window Approach (DWA)</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Coordinate Transformation</h5>
+                  <p>TF Frame Hierarchy (map, odom, base_link)</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Mapping Method</h5>
+                  <p>Occupancy Grid & SLAM</p>
+                </div>
+                <div class="spec-item">
+                  <h5>Visualization Tool</h5>
+                  <p>RViz Real-Time Debugging</p>
                 </div>
                 <div class="spec-item">
                   <h5>Environment Type</h5>
                   <p>Dynamic Indoor/Industrial Settings</p>
                 </div>
                 <div class="spec-item">
-                  <h5>Testing Scope</h5>
-                  <p>Real-World Validation & Refinement</p>
-                </div>
-                <div class="spec-item">
-                  <h5>Deliverables</h5>
-                  <p>ROS Packages, Navigation Scripts, Testing Documentation, Performance Reports</p>
+                  <h5>Key Deliverables</h5>
+                  <p>ROS Packages, Navigation Stack, PCB Design, Testing Reports, Performance Analysis, Documentation</p>
                 </div>
               </div>
             </div>
@@ -183,7 +212,7 @@
 
         <div class="process-timeline" data-aos="fade-up" data-aos-delay="100">
           <div class="timeline-header">
-            <h2>Development Process</h2>
+            <h2>Development Process & Engineering Workflow</h2>
           </div>
           <div class="timeline-steps">
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
@@ -191,8 +220,8 @@
                 <span class="step-number">1</span>
               </div>
               <div class="step-content">
-                <h4>System Design & Architecture</h4>
-                <p>Designed ROS architecture and defined sensor integration strategy for TurtleBot 4</p>
+                <h4>System Architecture & ROS Design</h4>
+                <p>Designed modular <strong>ROS 2 architecture</strong> defining sensor integration strategy for TurtleBot 4. Established coordinate transformation hierarchy (map → odom → base_link → sensor frames). Defined standard topics, messages, and communication protocols between perception, planning, and control subsystems.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
@@ -200,8 +229,8 @@
                 <span class="step-number">2</span>
               </div>
               <div class="step-content">
-                <h4>Sensor Integration & Calibration</h4>
-                <p>Integrated and calibrated all sensors including LiDAR, cameras, and IMU systems</p>
+                <h4>Custom PCB Design & Sensor Integration</h4>
+                <p>Designed and fabricated <strong>custom PCB specifically for this project</strong> serving as sensor interface board and power distribution. Integrated <strong>LiDAR, RGB camera, IMU, and odometry</strong> onto development board. Optimized sensor layout, wiring, and power conditioning. Conducted sensor calibration and frame alignment to ROS TF system.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="250">
@@ -209,8 +238,8 @@
                 <span class="step-number">3</span>
               </div>
               <div class="step-content">
-                <h4>SLAM & Mapping Implementation</h4>
-                <p>Implemented SLAM algorithms and developed real-time environment mapping capabilities</p>
+                <h4>SLAM, Mapping & Localization Implementation</h4>
+                <p>Implemented <strong>SLAM algorithms</strong> for simultaneous environment mapping and pose estimation. Developed <strong>occupancy grid representations</strong>. Tested localization methods for pose tracking in known and unknown environments. Evaluated mapping accuracy, odometry drift, and sensor uncertainty impacts.</p>
               </div>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
@@ -218,8 +247,17 @@
                 <span class="step-number">4</span>
               </div>
               <div class="step-content">
-                <h4>Navigation & Real-World Testing</h4>
-                <p>Deployed navigation algorithms and conducted extensive field testing with continuous refinement</p>
+                <h4>Path Planning & Algorithm Evaluation</h4>
+                <p>Implemented global planning algorithms: <strong>Dijkstra (deterministic shortest-path)</strong> and <strong>RRT* (sampling-based, progressive improvement)</strong>. Developed <strong>DWA-based local navigation</strong> for reactive obstacle avoidance. Evaluated trade-offs between optimality, computation time, and path geometry. Tested algorithms in simulated and real environments.</p>
+              </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="350">
+              <div class="step-marker">
+                <span class="step-number">5</span>
+              </div>
+              <div class="step-content">
+                <h4>Real-World Testing & Dynamic Navigation</h4>
+                <p>Conducted extensive field testing in dynamic indoor and industrial environments. Evaluated navigation under static obstacles and changing configurations. Implemented dynamic replanning when trajectories became unsuitable. Used <strong>RViz visualization</strong> for real-time debugging of sensor, localization, and planning outputs. Refined system parameters based on physical robot performance and real-world validation.</p>
               </div>
             </div>
           </div>
@@ -229,32 +267,52 @@
           <div class="row align-items-center">
             <div class="col-lg-5">
               <h2>Technologies & Tools</h2>
-              <p>State-of-the-art robotics middleware and sensor technologies enabling autonomous navigation in complex environments.</p>
+              <p>Comprehensive robotics middleware, sensor technologies, planning algorithms, and custom electronics enabling autonomous navigation in complex real-world environments.</p>
             </div>
             <div class="col-lg-6 offset-lg-1">
               <div class="tools-grid">
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="150">
-                  <h5>Robotics Framework</h5>
+                  <h5>ROS 2 & Framework</h5>
                   <div class="tool-list">
-                    <span class="tool-item">ROS (Robot Operating System)</span>
-                    <span class="tool-item">SLAM Algorithms</span>
+                    <span class="tool-item">ROS 2 Middleware</span>
                     <span class="tool-item">Navigation Stack</span>
+                    <span class="tool-item">Topic/Message System</span>
+                    <span class="tool-item">TF Coordinate Frames</span>
+                    <span class="tool-item">Launch Files & Config</span>
+                    <span class="tool-item">RViz Visualization</span>
                   </div>
                 </div>
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="200">
-                  <h5>Sensors & Hardware</h5>
+                  <h5>Perception & Sensors</h5>
                   <div class="tool-list">
-                    <span class="tool-item">LiDAR Sensors</span>
-                    <span class="tool-item">RGB Cameras</span>
-                    <span class="tool-item">IMU Units</span>
+                    <span class="tool-item">LiDAR Point Clouds</span>
+                    <span class="tool-item">RGB Camera Feed</span>
+                    <span class="tool-item">IMU Inertial Measurement</span>
+                    <span class="tool-item">Wheel Odometry</span>
+                    <span class="tool-item">SLAM Algorithms</span>
+                    <span class="tool-item">Occupancy Grid Maps</span>
                   </div>
                 </div>
                 <div class="tool-category" data-aos="fade-up" data-aos-delay="250">
-                  <h5>Path Planning</h5>
+                  <h5>Motion Planning & Control</h5>
                   <div class="tool-list">
-                    <span class="tool-item">Motion Planning Algorithms</span>
+                    <span class="tool-item">Dijkstra Graph Search</span>
+                    <span class="tool-item">RRT* Sampling-Based</span>
+                    <span class="tool-item">Dynamic Window (DWA)</span>
+                    <span class="tool-item">Global/Local Costmaps</span>
+                    <span class="tool-item">Trajectory Generation</span>
                     <span class="tool-item">Obstacle Avoidance</span>
-                    <span class="tool-item">Trajectory Optimization</span>
+                  </div>
+                </div>
+                <div class="tool-category" data-aos="fade-up" data-aos-delay="300">
+                  <h5>Custom Hardware & Electronics</h5>
+                  <div class="tool-list">
+                    <span class="tool-item">PCB Design (Self-Made)</span>
+                    <span class="tool-item">Sensor Interface Board</span>
+                    <span class="tool-item">Power Distribution</span>
+                    <span class="tool-item">Serial Communication</span>
+                    <span class="tool-item">Embedded Debugging</span>
+                    <span class="tool-item">Hardware Integration</span>
                   </div>
                 </div>
               </div>
@@ -265,19 +323,45 @@
         <div class="impact-metrics" data-aos="fade-up" data-aos-delay="100">
           <div class="metrics-container">
             <div class="metrics-header">
-              <h2>Project Impact & Achievements</h2>
-              <p>Successfully deployed a fully autonomous navigation system capable of reliable operation in dynamic real-world environments.</p>
+              <h2>Technical Achievements & System Integration</h2>
+              <p>Complete autonomous navigation pipeline demonstrating ROS architecture, multi-sensor fusion, SLAM/localization, planning algorithms, custom PCB design, and real-world validation in dynamic environments.</p>
             </div>
             <div class="metrics-grid">
               <div class="metric-card" data-aos="fade-up" data-aos-delay="150">
-                <div class="metric-value">5</div>
-                <div class="metric-label">Team Members Integration</div>
+                <div class="metric-value">4</div>
+                <div class="metric-label">Sensor Types Integrated</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="metric-value">6 Months</div>
-                <div class="metric-label">Project Duration</div>
+                <div class="metric-value">2</div>
+                <div class="metric-label">Global Planning Algorithms</div>
               </div>
               <div class="metric-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="metric-value">5</div>
+                <div class="metric-label">Development Phases</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="metric-value">10+</div>
+                <div class="metric-label">Engineering Competencies</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="350">
+                <div class="metric-value">Custom</div>
+                <div class="metric-label">Self-Designed PCB</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="metric-value">Real-World</div>
+                <div class="metric-label">Dynamic Testing</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="450">
+                <div class="metric-value">10+</div>
+                <div class="metric-label">Technologies & Tools</div>
+              </div>
+              <div class="metric-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="metric-value">Modular</div>
+                <div class="metric-label">ROS Architecture</div>
+              </div>
+            </div>
+          </div>
+        </div>
                 <div class="metric-value">Real-Time</div>
                 <div class="metric-label">Navigation Processing</div>
               </div>
