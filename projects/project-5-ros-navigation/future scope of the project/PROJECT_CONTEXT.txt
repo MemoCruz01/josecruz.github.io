@@ -1,0 +1,1478 @@
+from pathlib import Path
+
+content = r"""
+PROJECT CONTEXT — SHAREDNAV
+Collaborative Multi-Robot Navigation and Shared Environment Awareness in ROS 2
+
+Purpose of this document
+========================
+This file is the master context document for an AI-assisted development workflow in Visual Studio Code using Claude and GitHub Copilot.
+
+The AI coding agent should use this document as the main project specification before proposing architecture changes, generating code, adding dependencies, or modifying package structure.
+
+The objective is NOT to generate a huge codebase at once.
+The objective is to build the system incrementally, keep every phase runnable, and make sure the developer understands the ROS 2 architecture well enough to explain it in a technical interview.
+
+This project is designed as a 4-day intensive ROS 2 refresher and portfolio demonstrator focused on:
+- autonomous mobile robotics
+- ROS 2 architecture
+- SLAM
+- Nav2
+- TF2
+- multi-robot namespaces
+- cooperative exploration
+- shared environmental awareness
+- heterogeneous sensor information
+- multi-robot task allocation
+- basic route conflict handling
+- clean software architecture
+- measurable experiments
+
+The project should remain realistic for a 4-day implementation.
+Advanced multi-robot SLAM, distributed optimization, probabilistic data association, or semantic SLAM can be added only after the core system works reliably.
+
+
+1. PROJECT INTENTION
+====================
+
+Project name:
+SharedNav
+
+Full title:
+SharedNav — Collaborative Multi-Robot Navigation and Shared Environment Awareness in ROS 2
+
+Main research question:
+Can two autonomous mobile robots explore an initially unknown environment more efficiently by sharing environmental information and coordinating exploration goals instead of behaving independently?
+
+Secondary research question:
+Can heterogeneous sensor information contributed by different robots improve the shared representation of the environment and enable one robot to act on information detected by another robot?
+
+Core demonstration:
+Two TurtleBot-like mobile robots operate inside a simulated indoor environment.
+
+Robot 1:
+- 2D LiDAR
+- odometry
+- SLAM
+- Nav2
+- obstacle detection
+
+Robot 2:
+- 2D LiDAR
+- odometry
+- SLAM
+- Nav2
+- camera or RGB-D / depth sensor if time permits
+- optional semantic object detector
+
+Both robots:
+- maintain separated ROS 2 namespaces
+- maintain separated TF trees
+- navigate autonomously
+- contribute environmental information
+- receive coordinated exploration goals
+
+A central coordination layer:
+- tracks robot state
+- receives maps / world information
+- detects or receives exploration frontiers
+- assigns unique exploration goals
+- avoids sending both robots to the same frontier
+- optionally detects path conflicts
+- optionally maintains semantic object observations
+
+The expected final behavior is:
+
+1. Both robots start in an unknown environment.
+2. Each robot builds a local map.
+3. Frontier locations are detected.
+4. A coordinator assigns different frontiers to each robot.
+5. Robots explore simultaneously.
+6. Environmental information is shared.
+7. If semantic perception is implemented, Robot 2 detects an object.
+8. The object position is stored in a shared world model.
+9. Robot 1 can navigate to the object even if Robot 1 never detected it directly.
+10. Metrics demonstrate the advantage of coordinated multi-robot exploration.
+
+
+2. PROJECT PRIORITIES
+=====================
+
+Priority 1:
+A stable and understandable ROS 2 architecture.
+
+Priority 2:
+Two robots operating correctly under separate namespaces.
+
+Priority 3:
+Correct TF trees and navigation.
+
+Priority 4:
+SLAM / mapping.
+
+Priority 5:
+Cooperative frontier exploration.
+
+Priority 6:
+Shared world model.
+
+Priority 7:
+Semantic information sharing.
+
+Priority 8:
+Advanced multi-robot SLAM or probabilistic fusion.
+
+Do NOT sacrifice a stable core system in order to implement advanced features.
+
+If time becomes limited:
+- remove semantic perception first
+- remove advanced map merging second
+- keep multi-robot namespace + Nav2 + SLAM + frontier coordination
+
+
+3. DEVELOPMENT PHILOSOPHY
+=========================
+
+The coding agent MUST follow these rules:
+
+1. Build incrementally.
+2. Every phase must have a clear acceptance test.
+3. Do not generate the entire project in one response.
+4. Do not introduce large external frameworks unless necessary.
+5. Prefer standard ROS 2 messages and interfaces.
+6. Separate ROS interfaces from pure algorithms where possible.
+7. Use small nodes with clear responsibilities.
+8. Avoid hidden global state.
+9. Use parameters instead of hard-coded values.
+10. Keep robot-specific names configurable.
+11. Keep launch files modular.
+12. Prefer readable code over clever code.
+13. Add comments explaining ROS-specific decisions.
+14. Add basic tests for non-ROS algorithms.
+15. When generating code, explain:
+    - node purpose
+    - subscribed topics
+    - published topics
+    - services
+    - actions
+    - parameters
+    - TF assumptions
+    - QoS choices
+16. Never silently change topic names or frame names.
+17. Never assume a ROS 2 distribution without checking the current environment.
+18. Before using an API, confirm that it exists in the installed ROS 2/Nav2/slam_toolbox version.
+19. Do not mix simulation-specific logic into core algorithms.
+20. Keep the project portable to real robots later.
+
+
+4. TARGET SOFTWARE ENVIRONMENT
+==============================
+
+Preferred environment:
+- Ubuntu Linux
+- ROS 2
+- Gazebo / modern Gazebo simulator available in the selected ROS 2 distribution
+- TurtleBot3 or equivalent differential-drive robot
+- Nav2
+- slam_toolbox
+- RViz2
+- Python for custom ROS 2 nodes initially
+- C++ only if required for performance or as a later extension
+
+IMPORTANT:
+The agent must first inspect:
+- ROS_DISTRO
+- installed Nav2 packages
+- installed slam_toolbox
+- installed TurtleBot simulation packages
+- Gazebo version
+
+Do not hard-code installation commands before checking the actual ROS 2 distribution.
+
+Recommended first commands:
+- printenv ROS_DISTRO
+- ros2 pkg list
+- ros2 doctor
+- ros2 topic list
+- ros2 node list
+
+The agent should adapt instructions to the detected environment.
+
+
+5. CORE ROS 2 CONCEPTS TO PRACTICE
+==================================
+
+The project is also a ROS 2 refresher.
+
+The developer should actively understand and be able to explain:
+
+Nodes
+-----
+Independent computational units.
+
+Topics
+------
+Asynchronous streams of data.
+
+Examples:
+- /robot1/scan
+- /robot1/odom
+- /robot2/scan
+- /shared/frontiers
+
+Services
+--------
+Request-response interactions.
+
+Possible examples:
+- reset shared map
+- save experiment
+- request world model snapshot
+
+Actions
+-------
+Long-running tasks with feedback and cancellation.
+
+Primary example:
+- Nav2 NavigateToPose
+
+Parameters
+----------
+Runtime-configurable values.
+
+Examples:
+- robot names
+- map resolution
+- frontier minimum size
+- goal allocation weights
+- safety distance
+- exploration timeout
+
+Namespaces
+----------
+Critical for multi-robot separation.
+
+Expected structure:
+- /robot1/...
+- /robot2/...
+- /shared/...
+
+TF2
+---
+Critical coordinate-frame system.
+
+The developer must understand:
+map -> odom -> base_link -> sensors
+
+For a two-robot system, frame collisions must be avoided.
+
+Possible names:
+robot1/map
+robot1/odom
+robot1/base_link
+robot1/base_scan
+
+robot2/map
+robot2/odom
+robot2/base_link
+robot2/base_scan
+
+If a shared global map frame is later introduced:
+global_map
+  -> robot1/map
+  -> robot2/map
+
+The transformation between robot-local map frames and the global frame must be explicit.
+
+QoS
+---
+The developer should understand:
+- reliability
+- durability
+- history
+- depth
+
+Sensor streams may use best-effort QoS.
+Important state information may use reliable QoS.
+Map-like latched data may require appropriate durability settings.
+
+
+6. HIGH-LEVEL SYSTEM ARCHITECTURE
+=================================
+
+Conceptual architecture:
+
+                        +-----------------------------+
+                        |   Shared Coordinator Node   |
+                        |-----------------------------|
+                        | Robot state tracking        |
+                        | Frontier allocation         |
+                        | Goal assignment             |
+                        | Optional conflict handling  |
+                        +-------------+---------------+
+                                      |
+                         shared ROS 2 interfaces
+                                      |
+           +--------------------------+--------------------------+
+           |                                                     |
+   +-------v---------+                                   +-------v---------+
+   |     Robot 1     |                                   |     Robot 2     |
+   |-----------------|                                   |-----------------|
+   | LiDAR           |                                   | LiDAR           |
+   | Odometry        |                                   | Odometry        |
+   | SLAM            |                                   | SLAM            |
+   | Nav2            |                                   | Nav2            |
+   | Local costmap   |                                   | Camera/RGB-D*   |
+   +-------+---------+                                   +-------+---------+
+           |                                                     |
+           +-------------------- observations -------------------+
+                                      |
+                           +----------v-----------+
+                           | Shared World Model   |
+                           |----------------------|
+                           | Shared occupancy     |
+                           | Robot states         |
+                           | Frontier state       |
+                           | Semantic objects*    |
+                           | Observation metadata |
+                           +----------------------+
+
+* optional / stretch feature
+
+
+7. PROPOSED ROS 2 TOPIC STRUCTURE
+=================================
+
+Robot 1 examples:
+- /robot1/scan
+- /robot1/odom
+- /robot1/cmd_vel
+- /robot1/map
+- /robot1/pose
+- /robot1/goal_status
+
+Robot 2 examples:
+- /robot2/scan
+- /robot2/odom
+- /robot2/cmd_vel
+- /robot2/map
+- /robot2/camera/image_raw
+- /robot2/camera/depth/image_raw
+- /robot2/pose
+- /robot2/goal_status
+
+Shared examples:
+- /shared/global_map
+- /shared/frontiers
+- /shared/assigned_goals
+- /shared/robot_states
+- /shared/objects
+- /shared/metrics
+
+Do not force these exact names if existing packages use better standard interfaces.
+However, keep naming systematic and documented.
+
+
+8. PROPOSED PACKAGE STRUCTURE
+=============================
+
+Repository root:
+
+sharednav/
+|
+|-- README.md
+|-- LICENSE
+|-- .gitignore
+|-- PROJECT_CONTEXT.txt
+|
+|-- docs/
+|   |-- architecture.md
+|   |-- ros_graph.md
+|   |-- tf_tree.md
+|   |-- experiments.md
+|   |-- limitations.md
+|   `-- diagrams/
+|
+|-- src/
+|   |
+|   |-- sharednav_bringup/
+|   |   |-- package.xml
+|   |   |-- setup.py or CMakeLists.txt
+|   |   |-- launch/
+|   |   |   |-- simulation.launch.py
+|   |   |   |-- robot1.launch.py
+|   |   |   |-- robot2.launch.py
+|   |   |   `-- full_system.launch.py
+|   |   `-- config/
+|   |       |-- robot1_nav2.yaml
+|   |       |-- robot2_nav2.yaml
+|   |       `-- sharednav.yaml
+|   |
+|   |-- sharednav_frontier_exploration/
+|   |   |-- frontier_detector.py
+|   |   |-- frontier_utils.py
+|   |   |-- package.xml
+|   |   `-- tests/
+|   |
+|   |-- sharednav_coordinator/
+|   |   |-- coordinator_node.py
+|   |   |-- goal_allocator.py
+|   |   |-- robot_state.py
+|   |   |-- package.xml
+|   |   `-- tests/
+|   |
+|   |-- sharednav_world_model/
+|   |   |-- world_model_node.py
+|   |   |-- occupancy_fusion.py
+|   |   |-- object_registry.py
+|   |   |-- package.xml
+|   |   `-- tests/
+|   |
+|   |-- sharednav_semantic_perception/     [OPTIONAL]
+|   |   |-- detector_node.py
+|   |   |-- projection_utils.py
+|   |   |-- package.xml
+|   |   `-- config/
+|   |
+|   `-- sharednav_metrics/
+|       |-- metrics_node.py
+|       |-- experiment_logger.py
+|       |-- package.xml
+|       `-- config/
+|
+|-- worlds/
+|   `-- test_environment.*
+|
+|-- scripts/
+|   |-- run_experiment.sh
+|   |-- clean_build.sh
+|   `-- record_bag.sh
+|
+`-- results/
+    |-- experiment_01/
+    |-- experiment_02/
+    `-- plots/
+
+The agent should not create all packages immediately.
+Create only the packages needed for the current development phase.
+
+
+9. DATA MODELS
+==============
+
+9.1 Robot State
+---------------
+Suggested conceptual fields:
+
+robot_name
+timestamp
+pose
+linear_velocity
+angular_velocity
+navigation_status
+current_goal
+battery_state_optional
+localization_quality_optional
+
+Prefer standard ROS message types whenever possible.
+
+9.2 Frontier
+------------
+Conceptual fields:
+
+frontier_id
+centroid_x
+centroid_y
+size
+information_gain
+assigned_robot
+status
+timestamp
+
+Possible states:
+- AVAILABLE
+- ASSIGNED
+- REACHED
+- INVALID
+- BLOCKED
+
+9.3 Shared Object
+-----------------
+Optional semantic world model entry:
+
+object_id
+class_name
+position
+confidence
+source_robot
+timestamp
+observation_count
+
+Optional:
+covariance
+last_seen
+dynamic/static label
+
+9.4 Map Cell
+------------
+OccupancyGrid convention:
+- unknown
+- free
+- occupied
+
+Use nav_msgs/OccupancyGrid unless a different representation is clearly justified.
+
+
+10. PHASE 0 — ENVIRONMENT VERIFICATION
+======================================
+
+Objective:
+Confirm the development environment before creating project logic.
+
+Tasks:
+1. Detect ROS distribution.
+2. Verify simulator.
+3. Verify TurtleBot packages.
+4. Verify Nav2.
+5. Verify slam_toolbox.
+6. Create ROS 2 workspace.
+7. Build an empty custom package.
+8. Run a Hello World node.
+
+Acceptance criteria:
+- colcon build succeeds
+- source install/setup.bash works
+- ros2 run executes custom package
+- no unresolved dependency errors
+
+Agent instructions:
+- Do not modify architecture yet.
+- First report detected versions.
+- If a dependency is missing, explain why it is needed before installing it.
+
+
+11. PHASE 1 — TWO ROBOTS, NAMESPACES, TF
+========================================
+
+Primary objective:
+Spawn and control two simulated robots independently.
+
+Tasks:
+1. Create a simple simulation world.
+2. Spawn Robot 1.
+3. Spawn Robot 2.
+4. Apply unique namespaces.
+5. Verify sensor topics.
+6. Verify /cmd_vel separation.
+7. Verify odometry separation.
+8. Verify TF frame isolation.
+9. Teleoperate each robot independently.
+
+Expected namespaces:
+- /robot1
+- /robot2
+
+Acceptance criteria:
+- both robots are visible in simulation
+- Robot 1 moves without controlling Robot 2
+- Robot 2 moves without controlling Robot 1
+- both publish LiDAR data
+- both publish odometry
+- TF tree contains no duplicate/conflicting frames
+- RViz can visualize both robots
+
+Important debugging commands:
+- ros2 node list
+- ros2 topic list
+- ros2 topic echo
+- ros2 topic info
+- ros2 interface show
+- ros2 action list
+- ros2 service list
+- ros2 run tf2_tools view_frames
+- ros2 run tf2_ros tf2_echo
+
+Learning objective:
+Understand namespaces, remapping, launch files, TF2, and sensor topics.
+
+
+12. PHASE 2 — NAV2 FOR BOTH ROBOTS
+=================================
+
+Objective:
+Each robot must navigate independently to manually assigned goals.
+
+Tasks:
+1. Launch Nav2 for Robot 1.
+2. Launch Nav2 for Robot 2.
+3. Configure robot-specific parameter files.
+4. Verify local/global costmaps.
+5. Verify NavigateToPose actions.
+6. Send independent goals.
+7. Test simultaneous motion.
+8. Test obstacle avoidance.
+
+Acceptance criteria:
+- Robot 1 reaches a goal
+- Robot 2 reaches a goal
+- both can navigate simultaneously
+- one robot does not control or corrupt the other robot's costmaps
+- goals can be cancelled
+- navigation feedback can be observed
+
+Learning objective:
+Understand:
+- Nav2 architecture
+- lifecycle nodes
+- planners
+- controllers
+- costmaps
+- behavior trees
+- actions
+
+
+13. PHASE 3 — SLAM
+==================
+
+Objective:
+Each robot creates a map of an unknown environment.
+
+Preferred first approach:
+Run one slam_toolbox instance per robot under its namespace.
+
+Tasks:
+1. Launch slam_toolbox for Robot 1.
+2. Validate scan -> SLAM input.
+3. Validate map publication.
+4. Validate map->odom transform.
+5. Repeat for Robot 2.
+6. Save local maps.
+7. Visualize both map products.
+
+Expected topics:
+- /robot1/map
+- /robot2/map
+
+Acceptance criteria:
+- each robot produces a coherent map
+- loop closure works at least in a simple test
+- no TF collision
+- map can be visualized and saved
+
+Important:
+Do NOT attempt advanced decentralized pose graph fusion before this phase is stable.
+
+Learning objective:
+Understand:
+- occupancy grids
+- pose graph SLAM
+- loop closure
+- map/odom relationship
+- localization drift
+
+
+14. PHASE 4 — FRONTIER DETECTION
+================================
+
+Objective:
+Automatically identify unexplored boundaries.
+
+Definition:
+A frontier is a free-space region adjacent to unknown map cells.
+
+Implementation recommendation:
+Keep frontier detection algorithm independent from ROS.
+
+Pure function example:
+detect_frontiers(occupancy_grid) -> list[Frontier]
+
+Potential algorithm:
+1. Iterate over known free cells.
+2. Find free cells adjacent to unknown cells.
+3. Cluster connected frontier cells.
+4. Remove clusters below minimum size.
+5. Calculate centroid.
+6. Estimate information gain.
+
+Outputs:
+- frontier positions
+- frontier sizes
+- optional information gain
+
+Visualization:
+Publish markers to RViz.
+
+Acceptance criteria:
+- frontiers appear at boundaries of explored space
+- invalid isolated cells are filtered
+- frontier centroids are stable enough for navigation
+- frontiers are visible in RViz
+
+Unit tests:
+- empty map
+- fully explored map
+- simple room
+- two disconnected frontiers
+- noise / small clusters
+
+
+15. PHASE 5 — MULTI-ROBOT FRONTIER ALLOCATION
+=============================================
+
+Objective:
+Prevent robots from exploring the same location unnecessarily.
+
+Create:
+sharednav_coordinator
+
+Coordinator inputs:
+- robot poses
+- robot navigation states
+- detected frontiers
+- optional robot path length estimates
+
+Coordinator outputs:
+- assigned goal for Robot 1
+- assigned goal for Robot 2
+
+Initial cost function:
+cost(robot, frontier) = EuclideanDistance(robot, frontier)
+
+Improved cost:
+cost =
+    w_distance * distance
+    - w_information * information_gain
+    + w_conflict * conflict_penalty
+
+Rules:
+- one frontier cannot be assigned to two robots at the same time
+- reassign if navigation fails
+- invalidate frontier if it disappears
+- do not constantly change goals due to small map updates
+- use hysteresis or a minimum goal commitment time
+
+Acceptance criteria:
+- Robot 1 and Robot 2 receive different goals
+- both explore simultaneously
+- failed goals can be reassigned
+- duplicated exploration is lower than independent behavior
+
+Learning objective:
+Understand:
+- task allocation
+- centralized coordination
+- action clients
+- robot status tracking
+
+
+16. PHASE 6 — SHARED WORLD MODEL
+================================
+
+Objective:
+Create a common representation that is richer than each individual robot's local view.
+
+Create:
+sharednav_world_model
+
+Initial shared state:
+- robot poses
+- robot status
+- frontiers
+- optional global occupancy information
+
+Start simple.
+
+Do not implement mathematically complex occupancy fusion immediately.
+
+Version 1 map fusion can:
+1. transform robot-local map observations into a shared frame
+2. ignore unknown cells
+3. combine known free and occupied cells
+4. use conservative conflict handling
+
+Example conservative rule:
+- if reliable source reports occupied -> mark occupied
+- otherwise if at least one source reports free -> mark free
+- otherwise -> unknown
+
+IMPORTANT:
+The hardest problem is coordinate alignment.
+The implementation must clearly document how robot map frames are related.
+
+Possible approaches:
+A. Known initial robot poses in common simulation frame.
+B. Shared fixed world reference.
+C. Later: scan/pose graph alignment.
+
+For the 4-day project, A or B is acceptable.
+
+Acceptance criteria:
+- shared representation contains observations from both robots
+- robot sources are traceable
+- world model updates without crashing when one robot temporarily stops publishing
+
+
+17. PHASE 7 — HETEROGENEOUS SENSOR CONTRIBUTIONS
+================================================
+
+Optional but high-value feature.
+
+Objective:
+Demonstrate that different robots contribute different kinds of information.
+
+Robot 1:
+Geometric perception.
+
+Sensors:
+- LiDAR
+
+Contribution:
+- occupancy
+- obstacle geometry
+
+Robot 2:
+Geometric + semantic perception.
+
+Sensors:
+- LiDAR
+- RGB camera or RGB-D camera
+
+Contribution:
+- occupancy
+- semantic object observations
+
+Possible object classes:
+- chair
+- box
+- pallet
+- person
+- door
+
+Avoid spending excessive time training a custom neural network.
+Use a pre-trained detector if needed.
+
+Semantic pipeline:
+camera image
+-> detector
+-> object class + confidence
+-> depth / geometric projection
+-> global position
+-> shared object message
+-> world model
+
+Acceptance criteria:
+- Robot 2 detects at least one object
+- world model stores class, position, confidence, timestamp, source robot
+- Robot 1 can query or receive the object position
+
+
+18. PHASE 8 — CROSS-ROBOT SEMANTIC ACTION
+=========================================
+
+High-impact demo.
+
+Scenario:
+1. Robot 2 detects a target object.
+2. Robot 2 publishes observation.
+3. Shared world model stores target location.
+4. Robot 1 receives target coordinates.
+5. Robot 1 navigates to target.
+
+Key result:
+Robot 1 acts on information it never sensed itself.
+
+This demonstrates:
+- collective perception
+- shared environmental awareness
+- heterogeneous robot cooperation
+- world-model-mediated behavior
+
+Acceptance criteria:
+- target position is expressed in a shared frame
+- Robot 1 receives valid goal
+- Robot 1 navigates toward target
+- source robot and timestamp remain available for traceability
+
+
+19. PHASE 9 — BASIC ROUTE CONFLICT HANDLING
+==========================================
+
+Stretch feature.
+
+Objective:
+Reduce robot-to-robot motion conflicts.
+
+Simple version:
+If robots approach the same narrow region:
+- coordinator assigns priority
+- lower-priority robot pauses or replans
+
+Possible detection:
+- compare planned paths
+- detect spatial overlap
+- optionally estimate arrival-time overlap
+
+Initial rule:
+if distance_between_paths < threshold:
+    lower_priority_robot waits
+
+Do not attempt full multi-agent trajectory optimization in this project.
+
+Acceptance criteria:
+- robots do not repeatedly deadlock in a narrow corridor
+- priority decision is logged
+- paused robot resumes after conflict disappears
+
+
+20. PHASE 10 — METRICS AND EXPERIMENTS
+======================================
+
+The final project should not only show that "it works."
+It should compare configurations.
+
+Experiment A:
+Single robot exploration.
+
+Experiment B:
+Two independent robots with no coordination.
+
+Experiment C:
+Two coordinated robots.
+
+Optional Experiment D:
+Two coordinated heterogeneous robots with semantic sharing.
+
+Metrics:
+
+1. Exploration coverage
+known_cells / total_cells
+
+2. Time to coverage
+T_80
+T_90
+T_95
+
+3. Total distance
+D_robot1
+D_robot2
+D_total
+
+4. Duplicate exploration
+shared/redundant explored area
+
+5. Idle time
+time robots are waiting
+
+6. Goal failures
+number of Nav2 failures
+
+7. Communication
+messages per second
+approximate bytes per second if practical
+
+8. Semantic target completion time
+time until target is detected
+time until other robot reaches target
+
+Results should be recorded in:
+results/
+
+Use CSV for experiment logs.
+
+Create plots only after the system is stable.
+
+
+21. EXPECTED FINAL DEMONSTRATION
+================================
+
+Minimum viable demo:
+- two robots
+- separate namespaces
+- separate TF
+- Nav2
+- SLAM
+- frontier detection
+- coordinated frontier assignment
+
+Good demo:
+- all minimum features
+- shared occupancy/world representation
+- experiment metrics
+
+Excellent demo:
+- all good features
+- Robot 2 semantic perception
+- Robot 1 navigates to semantic target detected by Robot 2
+
+Stretch demo:
+- decentralized / merged multi-robot SLAM
+- uncertainty-aware map/object fusion
+- communication-aware allocation
+- route conflict prediction
+
+
+22. FOUR-DAY EXECUTION PLAN
+===========================
+
+DAY 1
+-----
+Goal:
+ROS 2 refresher + stable two-robot base system.
+
+Morning:
+- verify ROS environment
+- create repository/workspace
+- review nodes/topics/services/actions
+- spawn first TurtleBot
+- inspect topics and TF
+
+Afternoon:
+- spawn second robot
+- namespaces
+- TF isolation
+- independent teleoperation
+
+Evening:
+- Nav2 Robot 1
+- Nav2 Robot 2
+- manual goals in RViz
+
+Day 1 must end with:
+TWO independently controllable robots with working namespaces and TF.
+
+Do not move to cooperative exploration if Day 1 is unstable.
+
+
+DAY 2
+-----
+Goal:
+SLAM + frontier exploration.
+
+Morning:
+- slam_toolbox Robot 1
+- slam_toolbox Robot 2
+- inspect map/odom/base transforms
+
+Afternoon:
+- implement frontier detection
+- RViz markers
+- tests
+
+Evening:
+- build coordinator
+- assign unique frontiers
+- send NavigateToPose actions
+
+Day 2 must end with:
+TWO robots automatically exploring different regions.
+
+
+DAY 3
+-----
+Goal:
+Shared environmental awareness.
+
+Morning:
+- implement shared robot state
+- implement shared frontier registry
+- build initial global/shared map representation
+
+Afternoon:
+- map alignment / common coordinate assumptions
+- fusion logic
+- fail gracefully if robot data stops
+
+Evening:
+- if stable, add camera / RGB-D robot
+- semantic detector prototype
+
+Day 3 must end with:
+A shared state containing information contributed by both robots.
+
+
+DAY 4
+-----
+Goal:
+Polish + high-impact demo + measurements.
+
+Morning:
+- semantic object registry
+- Robot 2 detects target
+- Robot 1 navigates to shared target
+
+OR, if semantic part is not stable:
+- improve frontier allocation
+- add information gain
+- add conflict handling
+
+Afternoon:
+- run experiments
+- log metrics
+- record rosbag
+- create plots
+
+Evening:
+- clean README
+- architecture diagram
+- known limitations
+- interview talking points
+- record demo video if desired
+
+Day 4 must end with:
+A reproducible demo, not just source code.
+
+
+23. DEFINITION OF DONE
+======================
+
+The project is considered successful if:
+
+Core:
+[ ] Workspace builds cleanly.
+[ ] Two robots spawn reliably.
+[ ] Namespaces are correct.
+[ ] TF trees are correct.
+[ ] Both robots expose expected sensor data.
+[ ] Both robots navigate independently.
+[ ] SLAM works.
+[ ] Frontier detection works.
+[ ] Coordinator assigns different goals.
+[ ] Basic cooperative exploration works.
+
+Enhanced:
+[ ] Shared world representation exists.
+[ ] Shared map/state can be visualized.
+[ ] Metrics are logged.
+[ ] README explains architecture.
+
+Advanced:
+[ ] Heterogeneous sensing is demonstrated.
+[ ] Semantic object information is shared.
+[ ] One robot acts on another robot's observation.
+
+
+24. AGENT CODING INSTRUCTIONS
+=============================
+
+When Claude or Copilot receives a task:
+
+Step 1:
+Restate the exact phase currently being implemented.
+
+Step 2:
+Inspect existing repository files before proposing a change.
+
+Step 3:
+List files to be:
+- created
+- modified
+- untouched
+
+Step 4:
+Explain dependencies.
+
+Step 5:
+Generate the smallest working implementation.
+
+Step 6:
+Provide exact build/run/test commands.
+
+Step 7:
+Provide expected ROS topics/nodes/TF after execution.
+
+Step 8:
+Provide debugging steps.
+
+Step 9:
+Do not proceed to the next project phase automatically.
+Wait until current phase is verified.
+
+The agent should ask for terminal output if:
+- build fails
+- topic is missing
+- TF tree is invalid
+- Nav2 fails to activate
+- SLAM does not publish map
+- Gazebo plugin fails
+
+Never guess the cause of a runtime ROS error without inspecting logs.
+
+
+25. CODE QUALITY RULES
+======================
+
+Python:
+- PEP 8
+- type hints where helpful
+- small functions
+- dataclasses for pure data models when appropriate
+- logging through ROS logger, not print
+- exceptions handled explicitly
+- algorithmic code separated from Node callbacks
+
+ROS nodes:
+- descriptive node names
+- descriptive topic names
+- parameters declared explicitly
+- timers documented
+- callback groups only when required
+- no unnecessary multithreading
+
+Launch:
+- use LaunchArguments for robot names and positions
+- avoid duplicate launch definitions
+- reuse sub-launch files
+
+Configuration:
+- YAML for tunable parameters
+- no hard-coded robot-specific names in algorithms
+
+Tests:
+- prioritize frontier detection
+- goal allocation
+- occupancy fusion
+- object registry
+- conflict logic
+
+
+26. GIT WORKFLOW
+================
+
+Recommended branches:
+
+main
+develop
+feature/multi-robot-bringup
+feature/nav2
+feature/slam
+feature/frontier-exploration
+feature/coordinator
+feature/world-model
+feature/semantic-perception
+feature/metrics
+
+For a short 4-day project, a simpler workflow is acceptable:
+- main
+- one feature branch at a time
+
+Commit style examples:
+feat: spawn two namespaced robots
+feat: add independent nav2 stacks
+feat: add frontier detector
+feat: add multi-robot goal allocator
+feat: add shared world model
+test: add frontier detection cases
+fix: correct robot2 tf prefix
+docs: document shared map assumptions
+
+Do not commit:
+- build/
+- install/
+- log/
+- large rosbag files
+- model weights unless intentionally required
+- temporary datasets
+
+
+27. DEBUGGING CHECKLIST
+=======================
+
+If a robot does not move:
+- check /cmd_vel
+- check Nav2 lifecycle state
+- check controller server
+- check costmaps
+- check TF
+- check odometry
+
+If map does not appear:
+- check /scan
+- check frame_id
+- check TF scan -> base_link
+- check map -> odom publication
+- check slam_toolbox logs
+
+If both robots affect each other:
+- inspect namespaces
+- inspect remappings
+- inspect TF frame names
+- inspect parameter files
+
+If Nav2 goal fails:
+- check planner result
+- check costmaps
+- inspect global path
+- inspect controller feedback
+- verify target is in valid free space
+
+If frontier goals oscillate:
+- add goal commitment timer
+- add hysteresis
+- ignore very small frontier changes
+
+If maps cannot be fused:
+- stop
+- document coordinate assumptions
+- verify transformations numerically
+- do not "fix" by manually offsetting maps without documenting why
+
+
+28. INTERVIEW PREPARATION VALUE
+===============================
+
+The developer must be able to explain:
+
+1. Why ROS 2 namespaces are necessary.
+2. Why TF trees must be isolated.
+3. Difference between Topic, Service and Action.
+4. Why NavigateToPose is an Action.
+5. Difference between global planner and local controller.
+6. Difference between SLAM and localization.
+7. Meaning of map, odom and base_link.
+8. Why multi-robot map alignment is difficult.
+9. Difference between local environmental awareness and shared world awareness.
+10. Centralized vs decentralized coordination.
+11. How heterogeneous sensors can complement each other.
+12. Why confidence and timestamps matter.
+13. How frontier-based exploration works.
+14. Why two robots should not always choose the nearest frontier independently.
+15. What happens if one robot loses communication.
+16. How the system could scale from 2 to N robots.
+17. Current simplifications and limitations.
+18. What would be required for deployment on real industrial AMRs.
+
+
+29. LIMITATIONS TO STATE CLEARLY
+================================
+
+The project should openly acknowledge:
+
+- simulation is easier than real-world deployment
+- known initial transform may be used for map alignment
+- simple occupancy fusion is not full probabilistic fusion
+- semantic detections may contain false positives
+- centralized coordination creates a possible single point of failure
+- communication latency is initially simplified
+- robot-to-robot occlusion is simplified
+- multi-robot trajectory optimization is not implemented
+- dynamic object tracking may be simplified
+- no formal safety guarantee is provided
+
+These are not failures.
+They are clear next research directions.
+
+
+30. POTENTIAL RESEARCH EXTENSIONS
+=================================
+
+Future extensions:
+
+- decentralized multi-robot SLAM
+- pose graph exchange
+- loop closure between robots
+- covariance-aware occupancy fusion
+- semantic SLAM
+- Bayesian object fusion
+- multi-target tracking
+- distributed task allocation
+- auction-based frontier assignment
+- market-based multi-robot coordination
+- communication-aware planning
+- bandwidth-limited map sharing
+- graph neural networks for fleet coordination
+- multi-agent reinforcement learning
+- human-aware navigation
+- fleet-level dynamic obstacle prediction
+- decentralized world models
+- digital twin integration
+- real AMR deployment
+- heterogeneous robot fleets
+
+
+31. QUESTIONS THE AI AGENT SHOULD ASK BEFORE MAJOR CHANGES
+=========================================================
+
+Before changing architecture:
+- What phase are we currently in?
+- Is the current phase already verified?
+- What ROS 2 distribution is installed?
+- What simulator is installed?
+- Which TurtleBot model is available?
+- Are we using Python or C++ for this component?
+- Is the feature core or optional?
+- Does the change break namespace independence?
+- Does the change alter TF assumptions?
+- Does the change introduce a new dependency?
+- Can the same goal be achieved with a standard ROS 2 package?
+
+
+32. FIRST AGENT TASK
+====================
+
+When this project is first opened in Visual Studio Code, the first task for Claude/Copilot should be:
+
+"Read PROJECT_CONTEXT.txt completely. Do not generate the full project yet.
+
+First inspect the local development environment and report:
+1. Operating system version.
+2. ROS_DISTRO.
+3. Installed ROS 2 packages relevant to Nav2, slam_toolbox, TurtleBot and Gazebo.
+4. Gazebo version.
+5. Current workspace structure.
+6. Whether colcon is available.
+7. Whether RViz2 is available.
+8. Any obvious dependency conflicts.
+
+Then propose ONLY Phase 0 and Phase 1 implementation steps.
+Do not implement later phases until Phase 1 acceptance criteria are confirmed."
+
+
+33. EXAMPLE AI TASKS FOR LATER PHASES
+====================================
+
+Phase 1 prompt:
+"Implement only the two-robot bringup architecture described in PROJECT_CONTEXT.txt. Use unique ROS namespaces and TF prefixes. Before writing code, list the expected nodes, topics, frames and launch files."
+
+Frontier prompt:
+"Implement the frontier detection algorithm as a pure Python module first. Do not create the ROS node until unit tests for the algorithm pass."
+
+Coordinator prompt:
+"Implement centralized frontier allocation for exactly two robots. Start with distance-only assignment. Keep the allocation algorithm independent from ROS 2 interfaces and add unit tests."
+
+World model prompt:
+"Design the minimum viable shared world model. Reuse standard ROS 2 message types wherever practical. Do not create custom messages unless necessary. Explain coordinate-frame assumptions before implementation."
+
+Semantic prompt:
+"Add semantic observations from Robot 2 without changing the geometric SLAM pipeline. Keep semantic information in a separate world-model layer."
+
+Metrics prompt:
+"Create an experiment logger for coverage, exploration time, travel distance, idle time and goal failures. Output CSV files suitable for later analysis."
+
+
+34. FINAL PRINCIPLE
+===================
+
+The central idea of SharedNav is:
+
+INDIVIDUAL ROBOTS PERCEIVE LOCALLY.
+THE FLEET REASONS FROM SHARED INFORMATION.
+
+The first objective is not to create the most sophisticated multi-robot system.
+The first objective is to create a system whose architecture is:
+- understandable
+- modular
+- reproducible
+- measurable
+- explainable in an interview
+- extensible toward real research problems
+
+Build simple.
+Verify.
+Measure.
+Then extend.
+"""
+
+path = Path("/mnt/data/PROJECT_CONTEXT_SharedNav_ROS2.txt")
+path.write_text(content.strip() + "\n", encoding="utf-8")
+print(f"Created: {path}")
+print(f"Characters: {len(content):,}")
