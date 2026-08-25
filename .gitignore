@@ -1,0 +1,19 @@
+# BMW Project Images - Legal concerns, do not commit
+projects/project-3-bmw-cell/img/Station.png
+projects/project-3-bmw-cell/img/Station.webp
+projects/project-3-bmw-cell/img/Spanner.png
+projects/project-3-bmw-cell/img/Spanner.webp
+projects/project-3-bmw-cell/img/Vorrichtung.png
+projects/project-3-bmw-cell/img/Vorrichtung.webp
+
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
